@@ -6,7 +6,7 @@ export const TitleHeaders = ({
   position,
 }: {
   title: string;
-  description: string;
+  description?: string;
   position: "left" | "right";
 }) => {
   return (

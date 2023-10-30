@@ -22,6 +22,12 @@ const config: Config = {
           1: "#FBF0D1",
         },
       },
+      screens: {
+        md: "900px",
+      },
+      height: {
+        calc: "calc(100vh - 75px)",
+      },
     },
   },
   plugins: [],

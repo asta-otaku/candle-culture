@@ -11,6 +11,53 @@
 * {
   font-family: "Playfair Display", serif;
 }
+html {
+  max-width: 1700px;
+  margin: auto;
+  background-color: #000;
+}
 body {
   font-family: "Playfair Display", serif;
 }
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
+
+.categorySection {
+  background: linear-gradient(
+      180deg,
+      color(display-p3 0.8877 0.7477 0.3625) 0%,
+      color(display-p3 0.4499 0.3495 0.0731) 81.54%
+    ),
+    color(display-p3 0.2627 0.3451 0.2431);
+}
+
+.categorySection .innerCategorySection {
+  background-image: url("../assets/categoryBackground.png");
+  background-size: cover;
+}
+
+/* .categoryCard::before {
+  z-index: -10px;
+  height: 100%;
+  width: inherit;
+  content: " ";
+  bottom: -10px;
+  background-color: black;
+  border-radius: 24px;
+  position: absolute;
+  right: -10px;
+  border: 1px solid #fbdc97;
+} */
