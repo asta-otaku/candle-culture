@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import DemoImage from "@/assets/image.png";
 import SlantArrow from "@/assets/slantArrow.svg";
+import Link from "next/link";
 const Playlist = () => {
   return (
     <main>
@@ -81,9 +82,11 @@ const Playlist = () => {
                     </div>
                   </div>
                   <div className="py-3 text-black">
-                    <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                      Soulful Sundays
-                    </p>
+                    <Link href={"/playlist/as"}>
+                      <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+                        Soulful Sundays
+                      </p>
+                    </Link>
                     <p className="text-base">Playlist 106</p>
                     <p className="mt-2 border-[0.89px] w-max text-xs rounded-[20px] border-black text-opacity-50 px-2 py-1">
                       Afrobeats

@@ -11,23 +11,23 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
     <main className="bg-[#000000]">
       {/* desktop view */}
       <nav className="justify-between hidden md:flex text-bg-1 text-lg items-center px-20 md:px-24 py-2 md:py-4">
-        <Link href={"/"}>
+        <Link href={"/people"}>
           <p>People</p>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/podcast"}>
           <p>Podcast</p>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/playlist"}>
           <p>Playlist</p>
         </Link>
         <Image src={Logo} alt={"logo"} className="w-[100px] h-[100px]" />
-        <Link href={"/"}>
+        <Link href={"/poetry"}>
           <p>Poetry</p>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/prayer"}>
           <p>Prayer</p>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/contact"}>
           <p>Contact</p>
         </Link>
       </nav>
