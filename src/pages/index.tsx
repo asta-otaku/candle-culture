@@ -37,7 +37,6 @@ export default function Home() {
 
       if (error) {
         setData(null);
-        console.log(error);
         setFetchingData(false);
       }
 

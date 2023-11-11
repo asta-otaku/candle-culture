@@ -21,7 +21,6 @@ const Podcast = () => {
 
       if (error) {
         setData(null);
-        console.log(error);
         setFetchingData(false);
       }
 
@@ -46,7 +45,6 @@ const Podcast = () => {
 
       if (error) {
         setData(null);
-        console.log(error);
         setFetchingData(false);
       }
 

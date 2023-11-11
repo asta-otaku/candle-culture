@@ -31,13 +31,11 @@ const SinglePlaylist = () => {
 
       if (error) {
         setPlaylist(null);
-        console.log(error);
         setFetchingData(false);
       }
 
       if (data) {
         setPlaylist(data);
-        console.log(data);
         setFetchingData(false);
       }
     };
@@ -46,7 +44,6 @@ const SinglePlaylist = () => {
       const { data, error } = await supabase.from("data").select("*");
       if (error) {
         setData(null);
-        console.log(error);
         setFetchingData(false);
       }
 
