@@ -35,14 +35,14 @@ export const PodcastSection = ({ data }: { data: DataType[] | null }) => {
                   </div>
                 </div>
                 <div className="py-3">
-                  <Link href={`/playlist/${el.id}`}>
+                  <Link href={`/podcast/${el.id}`}>
                     {" "}
                     <p className="text-bg-1 italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
                       {el.name}
                     </p>
                   </Link>
 
-                  <p className="text-bg-1 text-base">Playlist {el.id}</p>
+                  <p className="text-bg-1 text-base">Podcast {el.id}</p>
                   <p className="text-bg-1 mt-2 border-[0.89px] w-max text-sm rounded-[20px] capitalize border-bg-1 text-opacity-50 px-2 py-1">
                     {el.category}
                   </p>
