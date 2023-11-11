@@ -69,9 +69,6 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
           <Link href={"/playlist"}>
             <p>Playlist</p>
           </Link>
-          <Link href={"/"}>
-            <Image src={Logo} alt={"logo"} className="w-[100px] h-[100px]" />
-          </Link>
           <Link href={"/poetry"}>
             <p>Poetry</p>
           </Link>
