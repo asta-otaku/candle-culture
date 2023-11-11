@@ -43,7 +43,7 @@ export const PlaylistsSection = ({ data }: { data: DataType[] | null }) => {
                   </Link>
 
                   <p className="text-bg-1 text-base">Playlist {el.id}</p>
-                  <p className="text-bg-1 mt-2 border-[0.89px] w-max rounded-[20px] capitalize border-bg-1 text-opacity-50 px-2 py-1">
+                  <p className="text-bg-1 mt-2 border-[0.89px] w-max text-sm rounded-[20px] capitalize border-bg-1 text-opacity-50 px-2 py-1">
                     {el.category}
                   </p>
                 </div>
