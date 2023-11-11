@@ -174,13 +174,13 @@ const SinglePlaylist = () => {
                       {new Date(playlist.created_at).toLocaleDateString()}
                     </p>
                     <span className="w-[9px] h-[9px] bg-black rounded-full"></span>
-                    <p>{playlist?.noOfSongs} Songs</p>
+                    <p>{playlist.podcastTimeListen}</p>
                   </div>
-                  <p className="italic capitalize text-black text-left text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
-                    {playlist.category}
-                  </p>
-                  <p className="italic text-black text-left text-3xl sm:text-4xl md:text-5xl">
+                  <p className="italic capitalize text-black text-left text-3xl md:text4xl lg:text-6xl">
                     {playlist.name}
+                  </p>
+                  <p className="italic text-black text-left text-xl sm:text-3xl md:text-4xl">
+                    {playlist.podcastAuthor}
                   </p>
                   <div className="relative rounded-[20px] mt-6 w-full">
                     <img

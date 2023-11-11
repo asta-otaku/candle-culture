@@ -169,20 +169,20 @@ const SinglePlaylist = () => {
                   )}
                 </div>
                 <div className="w-full order-1 md:order-2">
-                  <div className="flex gap-5 items-center text-[20px]">
+                  <div className="flex gap-5 items-center text-[18px]">
                     <p className="">
                       {new Date(playlist.created_at).toLocaleDateString()}
                     </p>
                     <span className="w-[9px] h-[9px] bg-black rounded-full"></span>
-                    <p>{playlist?.noOfSongs} Songs</p>
+                    <p> {playlist.poetryMinRead ?? "2"} min Read</p>
                   </div>
-                  <p className="italic capitalize text-black text-left text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
-                    {playlist.category}
+                  <p className="italic capitalize text-black text-left text-3xl md:text4xl lg:text-6xl">
+                    Poetry
                   </p>
-                  <p className="italic text-black text-left text-3xl sm:text-4xl md:text-5xl">
+                  <p className="italic text-black text-left text-xl sm:text-3xl md:text-4xl">
                     {playlist.name}
                   </p>
-                  <div className="relative rounded-[20px] mt-6 w-full">
+                  <div className="relative rounded-[20px] mt-6 w-full md:w-6/12">
                     <img
                       src={playlist.bannerImage}
                       alt="demo image"
@@ -200,7 +200,7 @@ const SinglePlaylist = () => {
                     <p>{playlist.description}</p>
                   </div>
                 </div>
-                <div className="order-2 md:order-3">
+                {/* <div className="order-2 md:order-3">
                   <div className="flex flex-col justify-center items-center gap-3 w-full md:w-[180px]">
                     {playlist.appleLink && (
                       <>
@@ -241,7 +241,7 @@ const SinglePlaylist = () => {
                       </>
                     )}
                   </div>
-                </div>
+                </div> */}
               </div>
             </section>
           )}

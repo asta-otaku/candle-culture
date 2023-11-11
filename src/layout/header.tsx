@@ -4,9 +4,19 @@ import React, { useState } from "react";
 import Logo from "@/assets/Logo.svg";
 import Hamburger from "@/assets/hamburger.svg";
 import Close from "@/assets/Close.svg";
+import Modal from "@/sections/modal";
 
 export const Header = ({ children }: { children: React.ReactNode }) => {
   const [mobileNav, setMobileNav] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <main className="bg-[#000000]">
       {/* desktop view */}
@@ -20,20 +30,27 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
         <Link href={"/playlist"}>
           <p>Playlist</p>
         </Link>
-        <Image src={Logo} alt={"logo"} className="w-[100px] h-[100px]" />
+        <Link href={"/"}>
+          <Image src={Logo} alt={"logo"} className="w-[100px] h-[100px]" />
+        </Link>
         <Link href={"/poetry"}>
           <p>Poetry</p>
         </Link>
-        <Link href={"/prayer"}>
-          <p>Prayer</p>
-        </Link>
+
+        <p onClick={openModal} className="cursor-pointer">
+          Prayer
+        </p>
+
         <Link href={"/contact"}>
           <p>Contact</p>
         </Link>
       </nav>
       {/* mobile view */}
       <nav className="justify-between px-4 md:px-10 lg:px-20 w-full flex md:hidden py-2">
-        <Image src={Logo} alt={"logo"} className="w-14 h-14" />
+        <Link href={"/"}>
+          {" "}
+          <Image src={Logo} alt={"logo"} className="w-14 h-14" />
+        </Link>{" "}
         <Image
           src={mobileNav ? Close : Hamburger}
           alt={"hamburger"}
@@ -43,22 +60,25 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
       {mobileNav && (
         <nav className="h-calc flex flex-col text-center justify-around text-bg-1">
           {" "}
-          <Link href={"/"}>
+          <Link href={"/people"}>
             <p>People</p>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/podcast"}>
             <p>Podcast</p>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/playlist"}>
             <p>Playlist</p>
           </Link>
           <Link href={"/"}>
+            <Image src={Logo} alt={"logo"} className="w-[100px] h-[100px]" />
+          </Link>
+          <Link href={"/poetry"}>
             <p>Poetry</p>
           </Link>
-          <Link href={"/"}>
-            <p>Prayer</p>
-          </Link>
-          <Link href={"/"}>
+          <p onClick={openModal} className="cursor-pointer">
+            Prayer
+          </p>
+          <Link href={"/contact"}>
             <p>Contact</p>
           </Link>
         </nav>
@@ -66,7 +86,10 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
 
       {children}
       {/* Newletter */}
-      <section className="px-6 sm:px-12 md:px-32 py-10 sm:py-16 md:py-20 bg-[#080808]">
+      <section
+        className="px-6 sm:px-12 md:px-32 py-10 sm:py-16 md:py-20 bg-[#080808]"
+        id="newsletter"
+      >
         <p className="italic text-bg-1 text-center text-2xl md:text-3xl">
           Stay up to date on all things cc
         </p>
@@ -85,6 +108,8 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
       <section className="py-3 bg-[#F2DEA71A]">
         <p className="text-bg-1 text-center text-xs">© Candle Culture 2023</p>
       </section>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </main>
   );
 };

@@ -5,7 +5,7 @@ import DemoImage from "@/assets/image.png";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
 import { DataType } from "..";
-const Playlist = () => {
+const Podcast = () => {
   const allCategory = ["Gospel", "Afrobeat", "Jazz", "Faith", "Hope", "Joy"];
   const [filter, setFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("");
@@ -17,7 +17,7 @@ const Playlist = () => {
       const { data, error } = await supabase
         .from("data")
         .select("*")
-        .eq("type", "playlist");
+        .eq("type", "podcast");
 
       if (error) {
         setData(null);
@@ -41,7 +41,7 @@ const Playlist = () => {
       const { data, error } = await supabase
         .from("data")
         .select("*")
-        .eq("type", "playlist")
+        .eq("type", "podcast")
         .eq("category", categoryFilter.toLocaleLowerCase());
 
       if (error) {
@@ -62,7 +62,7 @@ const Playlist = () => {
       {/* header */}
       <section className="px-6 sm:px-12 md:px-32 text-center py-10 sm:py-16 md:py-20 bg-[#000]">
         <p className="italic text-bg-1 text-center text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
-          Soulful Sundays
+          Creative Encounters
         </p>
         <p className="text-bg-1 text-opacity-70 text-base mt-4">
           Start each week with a new sound curated just for you
@@ -152,7 +152,7 @@ const Playlist = () => {
                       </div>
                     </div>
                     <div className="py-3 text-black">
-                      <Link href={`/playlist/${el.id}`}>
+                      <Link href={`/podcast/${el.id}`}>
                         <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
                           {el.name}
                         </p>
@@ -173,4 +173,4 @@ const Playlist = () => {
   );
 };
 
-export default Playlist;
+export default Podcast;
