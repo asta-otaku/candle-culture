@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import ArrowRight from "@/assets/arrowRight.svg";
-import DemoImage from "@/assets/image.png";
+import rightArrow from "@/assets/rightArrow.svg";
 import ArrowBack from "@/assets/arrowBack.svg";
 import Apple from "@/assets/apple.svg";
 import Spotify from "@/assets/spotify.svg";
@@ -100,7 +99,7 @@ const SinglePlaylist = () => {
                     <div className="w-full md:w-[260px]">
                       <div className="flex items-center justify-between w-full">
                         <p className="uppercase font-medium">Next</p>
-                        <Image src={ArrowRight} alt="arrow right" />
+                        <Image src={rightArrow} alt="arrow right" />
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
