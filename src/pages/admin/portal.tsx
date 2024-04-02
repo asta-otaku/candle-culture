@@ -8,9 +8,6 @@ function Portal() {
   return (
     <div className="w-scren h-screen flex items-center justify-center px-4">
       <div className="max-w-xl w-full relative">
-        {/* <div className="absolute -top-[30%] -left-[30%]">
-          <Image src={logo} alt="logo" />
-        </div> */}
         <h2 className="text-[#F2DEA7] font-medium text-2xl">Admin Portal</h2>
         <form className="flex flex-col gap-4 w-full mt-6">
           <div>
@@ -52,11 +49,14 @@ function Portal() {
               Category
             </h5>
             <div className="flex justify-between items-center w-full p-2 bg-[#F2DEA7] rounded-lg border border-[#1018280D] border-solid">
-              <input
-                placeholder="Category"
-                type="text"
-                className="bg-transparent w-full outline-none text-black placeholder:text-black"
-              />
+              <select className="bg-transparent w-full outline-none">
+                <option value="gospel">Gospel</option>
+                <option value="afrobeat">Afrobeat</option>
+                <option value="jazz">Jazz</option>
+                <option value="faith">Faith</option>
+                <option value="hope">Hope</option>
+                <option value="joy">Joy</option>
+              </select>
             </div>
           </div>
           <div>
