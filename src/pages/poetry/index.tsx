@@ -134,7 +134,11 @@ const Poetry = () => {
             <div className="w-full my-6 md:px-20 px-6 sm:px-10">
               <div className=" grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3 gap-6 pb-10">
                 {data?.map((el) => (
-                  <div className="rounded-[20px] w-full" key={el.id}>
+                  <div
+                    onClick={() => (window.location.href = `/poetry/${el.id}`)}
+                    className="rounded-[20px] w-full cursor-pointer"
+                    key={el.id}
+                  >
                     <div className="relative">
                       <img
                         src={el.bannerImage}

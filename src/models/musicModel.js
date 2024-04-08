@@ -1,11 +1,12 @@
-import { Schema, models, model } from 'mongoose';
+import { Schema, models, model } from "mongoose";
 
 const Music = Schema({
   title: String,
-  description: String,
   subtitle: String,
-  authorEmail: String,
-  authorFullName: String, 
+  category: String,
+  link: String,
+  description: String,
+  image: Buffer,
 });
 
-export default models.Music || model('Music', Music);
+export default models.Music || model("Music", Music);
