@@ -202,7 +202,7 @@ function Portal() {
             <div key={value._id} className="flex gap-4 mt-4">
               <div className="w-1/4">
                 <Image
-                  src={Buffer.from(value.image, "base64").toString()}
+                  src={`data:image/jpeg;base64,${value.image}`}
                   alt="image"
                   width={100}
                   height={100}
