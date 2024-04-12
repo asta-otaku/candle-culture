@@ -1,7 +1,7 @@
 import Music from "../../../models/musicModel";
 import { connectDB } from "../../../lib/connectDb";
-import formidable from "formidable";
-import multer from "multer";
+import { IncomingForm } from "formidable";;
+import * as fs from "fs";
 
 export const config = {
   api: {
@@ -11,30 +11,18 @@ export const config = {
 
 export default async function handler(req, res) {
   await connectDB();
-  const storageConfig = multer.memoryStorage();
-  const upload = multer({ storage: storageConfig });
+
   switch (req.method.toUpperCase()) {
     case "POST":
-      const form = formidable({ multiples: true });
+      const form = new IncomingForm();
 
-      const formData = new Promise((resolve, reject) => {
+      try {
         form.parse(req, async (err, fields, files) => {
-          if (err) {
-            reject("error");
-          }
-          resolve({ fields, files });
-        });
-      });
+          if (err)
+            return res
+              .status(500)
+              .json({ success: false, message: err.message });
 
-      upload.single("image")(req, null, async (err) => {
-        if (err) {
-          return res.status(500).json({ error: "Upload error." });
-        }
-
-        const file = req.file;
-        const fileBuffer = file.buffer;
-        try {
-          const { fields, files } = await formData;
           const title = fields.title[0];
           const subtitle = fields.subtitle[0];
           const category = fields.category[0];
@@ -46,18 +34,18 @@ export default async function handler(req, res) {
             category,
             link,
             description,
-            image: fileBuffer,
+            image: fs.readFileSync(files.image[0].filepath).toString("base64"),
           });
           await newMusic.save();
-          res.json({
-            message: "Music playlist data saved successfully",
-            data: newMusic,
-          });
-        } catch (error) {
-          console.error(error);
-          res.status(500).json({ message: "Internal server error" });
-        }
-      });
+        });
+
+        res.json({
+          message: "Music playlist data saved successfully",
+        });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+      }
       break;
     case "GET":
       try {

@@ -6,7 +6,7 @@ const Music = Schema({
   category: String,
   link: String,
   description: String,
-  image: Buffer,
+  image: String,
 });
 
 export default models.Music || model("Music", Music);
