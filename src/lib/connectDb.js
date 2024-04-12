@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const DATABASE_URL = process.env.MONGO_URI;
 
 if (!DATABASE_URL) {
-  throw new Error("Please define the DATABASE_URL environment variable inside .env.local");
+  throw new Error(
+    "Please define the DATABASE_URL environment variable inside .env.local"
+  );
 }
 
 let cached = global.mongoose;
@@ -30,4 +32,4 @@ async function connectDB() {
   return cached.conn;
 }
 
-export default connectDB;
+export { connectDB };

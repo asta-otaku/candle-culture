@@ -1,5 +1,5 @@
 import Poetry from "../../../models/poetryModel";
-import connectDB from "../../lib/connectDb";
+import { connectDB } from "../../../lib/connectDb";
 
 export default async function handler(req, res) {
   await connectDB();

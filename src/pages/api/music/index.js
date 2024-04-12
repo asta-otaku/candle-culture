@@ -1,5 +1,5 @@
 import Music from "../../../models/musicModel";
-import connectDB from "../../lib/connectDb";
+import { connectDB } from "../../../lib/connectDb";
 import formidable from "formidable";
 import multer from "multer";
 

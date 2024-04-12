@@ -1,5 +1,5 @@
 import Podcast from "../../../models/podcastModel";
-import connectDB from "../../lib/connectDb";
+import { connectDB } from "../../../lib/connectDb";
 
 export default async function handler(req, res) {
   await connectDB();
@@ -24,7 +24,10 @@ export default async function handler(req, res) {
 
       res
         .status(200)
-        .json({ message: "Podcast updated successfully", data: updatedPodcast });
+        .json({
+          message: "Podcast updated successfully",
+          data: updatedPodcast,
+        });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal server error" });

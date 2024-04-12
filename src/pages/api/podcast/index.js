@@ -1,9 +1,9 @@
 import Podcast from "../../../models/podcastModel";
-import connectDB from "../../lib/connectDb";
+import { connectDB } from "../../../lib/connectDb";
 
 export default async function handler(req, res) {
   await connectDB();
-  
+
   switch (req.method.toUpperCase()) {
     case "POST":
       try {
