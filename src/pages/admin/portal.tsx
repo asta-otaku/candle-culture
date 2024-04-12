@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Portal() {
   const photoID = useRef<any>(null);
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState([]);
 
   const [formDetails, setFormDetails] = useState({
     type: "",
@@ -70,7 +70,7 @@ function Portal() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get("http://localhost:3000/api/music");
-      console.log(res.data);
+      setValues(res.data.data);
     };
 
     fetchData();
@@ -197,6 +197,36 @@ function Portal() {
             Post
           </button>
         </form>
+        {values &&
+          values.map((value: any) => (
+            <div key={value._id} className="flex gap-4 mt-4">
+              <div className="w-1/4">
+                <Image
+                  src={Buffer.from(value.image, "base64").toString()}
+                  alt="image"
+                  width={100}
+                  height={100}
+                />
+              </div>
+              <div className="w-3/4">
+                <h3 className="text-[#F2DEA7] font-medium text-lg">
+                  {value.title}
+                </h3>
+                <p className="text-[#A98D40] font-medium text-sm">
+                  {value.subtitle}
+                </p>
+                <p className="text-[#A98D40] font-medium text-sm">
+                  {value.category}
+                </p>
+                <p className="text-[#A98D40] font-medium text-sm">
+                  {value.link}
+                </p>
+                <p className="text-[#A98D40] font-medium text-sm">
+                  {value.description}
+                </p>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

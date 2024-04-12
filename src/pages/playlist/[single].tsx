@@ -103,7 +103,7 @@ const SinglePlaylist = () => {
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
-                          <img
+                          <Image
                             src={nextPlaylist.bannerImage}
                             alt="demo image"
                             className="rounded-[20px] border-4 border-black w-full md:h-[240px]"
@@ -136,7 +136,7 @@ const SinglePlaylist = () => {
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
-                          <img
+                          <Image
                             src={prevPlaylist.bannerImage}
                             alt="demo image"
                             className="rounded-[20px] border-4 border-black w-full md:h-[240px]"
@@ -179,7 +179,7 @@ const SinglePlaylist = () => {
                     {playlist.name}
                   </p>
                   <div className="relative rounded-[20px] mt-6 w-full">
-                    <img
+                    <Image
                       src={playlist.bannerImage}
                       alt="demo image"
                       className="rounded-[40px] border-black border-[4px] w-full"
