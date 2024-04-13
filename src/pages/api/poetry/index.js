@@ -54,6 +54,7 @@ export default async function handler(req, res) {
           message: "Poetry retrieved successfully",
           data: poetry.map(
             ({ image, _id, title, subtitle, category, link, description }) => ({
+              _id,
               title,
               subtitle,
               category,

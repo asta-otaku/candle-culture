@@ -55,6 +55,7 @@ export default async function handler(req, res) {
           message: "Music retrieved successfully",
           data: music.map(
             ({ image, _id, title, subtitle, category, link, description }) => ({
+              _id,
               title,
               subtitle,
               category,

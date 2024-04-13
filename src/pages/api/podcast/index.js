@@ -54,6 +54,7 @@ export default async function handler(req, res) {
           message: "Podcast retrieved successfully",
           data: podcast.map(
             ({ image, _id, title, subtitle, category, link, description }) => ({
+              _id,
               title,
               subtitle,
               category,
