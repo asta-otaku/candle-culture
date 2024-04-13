@@ -3,6 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
+import { BASE_URL } from "@/lib/constants";
 
 const Playlist = () => {
   const allCategory = ["Gospel", "Afrobeat", "Jazz", "Faith", "Hope", "Joy"];
@@ -14,7 +15,7 @@ const Playlist = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/music");
+        const res = await axios.get(`${BASE_URL}/api/music`);
         setData(res.data.data);
         setFetchingData(false);
       } catch (error) {

@@ -4,6 +4,7 @@ import { TitleHeaders } from "@/components/titleHeaders";
 import Image from "next/image";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
+import { BASE_URL } from "@/lib/constants";
 
 export const PodcastSection = () => {
   const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ export const PodcastSection = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/podcast");
+        const res = await axios.get(`${BASE_URL}/api/podcast`);
         setData(res.data.data);
       } catch (error) {
         console.log(error);

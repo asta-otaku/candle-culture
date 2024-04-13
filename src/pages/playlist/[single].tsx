@@ -9,6 +9,7 @@ import SlantArrow from "@/assets/slantArrow.svg";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { BASE_URL } from "@/lib/constants";
 
 const SinglePlaylist = () => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const SinglePlaylist = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/music");
+        const res = await axios.get(`${BASE_URL}/api/music`);
         setData(res.data.data);
         const playlist = res.data.data.find(
           (p: any) => p.id == router.query.single

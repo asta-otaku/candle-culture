@@ -2,10 +2,10 @@ import Image from "next/image";
 import upload from "@/assets/image-upload.svg";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { BASE_URL } from "@/lib/constants";
 
 function Portal() {
   const photoID = useRef<any>(null);
-  const [values, setValues] = useState([]);
 
   const [formDetails, setFormDetails] = useState({
     type: "",
@@ -47,15 +47,11 @@ function Portal() {
       alert("Please fill all fields");
     } else {
       try {
-        const res = await axios.post(
-          `http://localhost:3000/api/${data.type}`,
-          data,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const res = await axios.post(`${BASE_URL}/api/${data.type}`, data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
         if (res.status === 200) {
           alert("Post created successfully");
         } else {
@@ -66,15 +62,6 @@ function Portal() {
       }
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get("http://localhost:3000/api/music");
-      setValues(res.data.data);
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <div className="w-scren h-screen flex items-center justify-center px-4">
