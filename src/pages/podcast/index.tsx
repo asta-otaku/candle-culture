@@ -1,60 +1,30 @@
 import React, { useState, useEffect } from "react";
-import supabase from "@/config/supabase";
+import axios from "axios";
 import Image from "next/image";
-import DemoImage from "@/assets/image.png";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
-import { DataType } from "..";
+
 const Podcast = () => {
   const allCategory = ["Gospel", "Afrobeat", "Jazz", "Faith", "Hope", "Joy"];
   const [filter, setFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("");
-  const [data, setData] = useState<DataType[] | null>(null);
+  const [data, setData] = useState([]);
   const [fetchingData, setFetchingData] = useState(true);
+
   useEffect(() => {
-    const getAllData = async () => {
-      setFetchingData(true);
-      const { data, error } = await supabase
-        .from("data")
-        .select("*")
-        .eq("type", "podcast");
-
-      if (error) {
-        setData(null);
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/podcast");
+        setData(res.data.data);
         setFetchingData(false);
-      }
-
-      if (data) {
-        setData(data);
+      } catch (error) {
+        console.log(error);
         setFetchingData(false);
       }
     };
-    if (filter === "all") {
-      getAllData();
-    }
-  }, [filter]);
-  useEffect(() => {
-    if (!categoryFilter) return;
-    const getAllData = async () => {
-      setFetchingData(true);
-      const { data, error } = await supabase
-        .from("data")
-        .select("*")
-        .eq("type", "podcast")
-        .eq("category", categoryFilter.toLocaleLowerCase());
+    fetchData();
+  }, []);
 
-      if (error) {
-        setData(null);
-        setFetchingData(false);
-      }
-
-      if (data) {
-        setData(data);
-        setFetchingData(false);
-      }
-    };
-    getAllData();
-  }, [categoryFilter]);
   return (
     <main>
       {/* header */}
@@ -133,35 +103,68 @@ const Podcast = () => {
             )}
             <div className="w-full my-6 md:px-20 px-6 sm:px-10">
               <div className=" grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3 gap-6 pb-10">
-                {data?.map((el) => (
-                  <div className="rounded-[20px] w-full" key={el.id}>
-                    <div className="relative">
-                      <img
-                        src={el.bannerImage}
-                        alt="demo image"
-                        className="rounded-[20px] border-bg-1 border-[4px] w-full md:h-[240px]"
-                      />
-                      <div className="absolute bg-white rounded-[50%] w-[38px] p-3 md:w-[48px] h-[38px] md:h-[48px] flex bottom-3 right-3 justify-center items-center">
-                        <Image
-                          src={SlantArrow}
-                          alt="slant arrow"
-                          className="w-auto"
-                        />
-                      </div>
-                    </div>
-                    <div className="py-3 text-black">
-                      <Link href={`/podcast/${el.id}`}>
-                        <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                          {el.name}
-                        </p>
-                      </Link>
-                      <p className="text-base">Playlist {el.id}</p>
-                      <p className="mt-2 border-[0.89px] capitalize w-max text-xs rounded-[20px] border-black text-opacity-50 px-2 py-1">
-                        {el.category}
+                {data.length > 0 ? (
+                  data.filter(
+                    (el: any) =>
+                      categoryFilter === "" || el.category === categoryFilter
+                  )?.length > 0 ? (
+                    data
+                      .filter(
+                        (el: any) =>
+                          categoryFilter === "" ||
+                          el.category === categoryFilter
+                      )
+                      .map((el: any, idx) => (
+                        <div
+                          className="rounded-[20px] w-full cursor-pointer"
+                          key={idx}
+                          onClick={() =>
+                            (window.location.href = `/podcast/${el._id}`)
+                          }
+                        >
+                          <div className="relative">
+                            <Image
+                              src={el.image}
+                              width={0}
+                              height={0}
+                              alt="demo image"
+                              className="rounded-[20px] border-bg-1 border-[4px] w-full md:h-[240px]"
+                            />
+                            <div className="absolute bg-white rounded-[50%] w-[38px] p-3 md:w-[48px] h-[38px] md:h-[48px] flex bottom-3 right-3 justify-center items-center">
+                              <Image
+                                src={SlantArrow}
+                                alt="slant arrow"
+                                className="w-auto"
+                              />
+                            </div>
+                          </div>
+                          <div className="py-3 text-black">
+                            <Link href={`/podcast/${el._id}`}>
+                              <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+                                {el.title}
+                              </p>
+                            </Link>
+                            <p className="text-base">{el.subtitle}</p>
+                            <p className="mt-2 border-[0.89px] capitalize w-max text-xs rounded-[20px] border-black text-opacity-50 px-2 py-1">
+                              {el.category}
+                            </p>
+                          </div>
+                        </div>
+                      ))
+                  ) : (
+                    <div className="w-full flex items-center justify-center">
+                      <p className="text-[#A98D40] font-medium text-lg">
+                        No playlist available
                       </p>
                     </div>
+                  )
+                ) : (
+                  <div className="w-full flex items-center justify-center">
+                    <p className="text-[#A98D40] font-medium text-lg">
+                      No playlist available
+                    </p>
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </div>

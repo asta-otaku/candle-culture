@@ -1,66 +1,67 @@
 import Image from "next/image";
 import React from "react";
+import axios from "axios";
 import rightArrow from "@/assets/rightArrow.svg";
 import ArrowBack from "@/assets/arrowBack.svg";
+import Other from "@/assets/other.svg";
 import arrowDown from "@/assets/arrowDown.svg";
 import SlantArrow from "@/assets/slantArrow.svg";
 import { useState, useEffect } from "react";
-import supabase from "@/config/supabase";
 import { useRouter } from "next/router";
-import { DataType } from "..";
 import Link from "next/link";
 
 const SinglePlaylist = () => {
   const router = useRouter();
-  const [data, setData] = useState<DataType[] | null>(null);
-  const [playlist, setPlaylist] = useState<DataType | null>(null);
+
+  const [data, setData] = useState([]);
+  const [playlist, setPlaylist] = useState<{
+    _id: string;
+    category: string;
+    description: string;
+    image: string;
+    link: string;
+    subtitle: string;
+    title: string;
+  }>({
+    _id: "",
+    category: "",
+    description: "",
+    image: "",
+    link: "",
+    subtitle: "",
+    title: "",
+  });
   const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
-    if (!router.query.single) return;
-    const getAllPlaylist = async () => {
-      const { data, error } = await supabase
-        .from("data")
-        .select("*")
-        .eq("id", router.query.single)
-        .single();
-
-      if (error) {
-        setPlaylist(null);
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/poetry");
+        setData(res.data.data);
+        const playlist = res.data.data.find(
+          (p: any) => p.id == router.query.single
+        );
+        setPlaylist({
+          ...playlist,
+        });
+        console.log(playlist, "playlist");
         setFetchingData(false);
-      }
-
-      if (data) {
-        setPlaylist(data);
-        setFetchingData(false);
-      }
-    };
-
-    const getAllData = async () => {
-      const { data, error } = await supabase.from("data").select("*");
-      if (error) {
-        setData(null);
-        setFetchingData(false);
-      }
-
-      if (data) {
-        setData(data);
+      } catch (error) {
+        console.log(error);
         setFetchingData(false);
       }
     };
+    fetchData();
+  }, []);
 
-    getAllPlaylist();
-    getAllData();
-  }, [router]);
-
-  const [nextPlaylist, setNextPlaylist] = useState<DataType | null>(null);
-  const [prevPlaylist, setPrevPlaylist] = useState<DataType | null>(null);
+  const [nextPlaylist, setNextPlaylist] = useState<any | null>(null);
+  const [prevPlaylist, setPrevPlaylist] = useState<any | null>(null);
   useEffect(() => {
     const playListId = router.query.single;
 
     if (playListId && data) {
       // Find the index of the current playlist in the array
-      const currentIndex = data?.findIndex((p) => p.id == +playListId);
+      const currentIndex = data?.findIndex((p: any) => p._id == +playListId);
       // Calculate the next and previous playlist IDs
       if (currentIndex == 0) {
         setPrevPlaylist(null);
@@ -96,12 +97,14 @@ const SinglePlaylist = () => {
                     <div className="w-full md:w-[260px]">
                       <div className="flex items-center justify-between w-full">
                         <p className="uppercase font-medium">Next</p>
-                        <Image src={rightArrow} alt="arrow-right" />
+                        <Image src={rightArrow} alt="arrow right" />
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
-                          <img
-                            src={nextPlaylist.bannerImage}
+                          <Image
+                            src={nextPlaylist.image}
+                            width={0}
+                            height={0}
                             alt="demo image"
                             className="rounded-[20px] border-4 border-black w-full md:h-[240px]"
                           />
@@ -114,11 +117,9 @@ const SinglePlaylist = () => {
                           </div>
                         </div>
                         <div className="py-3 text-black">
-                          <Link
-                            href={`/${nextPlaylist.type}/${nextPlaylist.id}`}
-                          >
+                          <Link href={`/poetry/${nextPlaylist._id}`}>
                             <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                              {nextPlaylist.name}
+                              {nextPlaylist.title}
                             </p>
                           </Link>
                         </div>
@@ -133,8 +134,10 @@ const SinglePlaylist = () => {
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
-                          <img
-                            src={prevPlaylist.bannerImage}
+                          <Image
+                            src={prevPlaylist.image}
+                            width={0}
+                            height={0}
                             alt="demo image"
                             className="rounded-[20px] border-4 border-black w-full md:h-[240px]"
                           />
@@ -148,11 +151,9 @@ const SinglePlaylist = () => {
                         </div>
                         <div className="py-3 text-black">
                           <div className="py-3 text-black">
-                            <Link
-                              href={`/${prevPlaylist.type}/${prevPlaylist.id}`}
-                            >
+                            <Link href={`/poetry/${prevPlaylist._id}`}>
                               <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                                {prevPlaylist.name}
+                                {prevPlaylist.title}
                               </p>
                             </Link>
                           </div>
@@ -162,22 +163,22 @@ const SinglePlaylist = () => {
                   )}
                 </div>
                 <div className="w-full order-1 md:order-2">
-                  <div className="flex gap-5 items-center text-[18px]">
-                    <p className="">
-                      {new Date(playlist.created_at).toLocaleDateString()}
-                    </p>
+                  <div className="flex gap-5 items-center text-[20px]">
+                    <p className="">{playlist.description}</p>
                     <span className="w-[9px] h-[9px] bg-black rounded-full"></span>
-                    <p> {playlist.poetryMinRead ?? "2"} min Read</p>
+                    <p>{playlist?.subtitle} Songs</p>
                   </div>
-                  <p className="italic capitalize text-black text-left text-3xl md:text4xl lg:text-6xl">
-                    Poetry
+                  <p className="italic capitalize text-black text-left text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
+                    {playlist.category}
                   </p>
-                  <p className="italic text-black text-left text-xl sm:text-3xl md:text-4xl">
-                    {playlist.name}
+                  <p className="italic text-black text-left text-3xl sm:text-4xl md:text-5xl">
+                    {playlist.title}
                   </p>
-                  <div className="relative rounded-[20px] mt-6 w-full md:w-6/12">
-                    <img
-                      src={playlist.bannerImage}
+                  <div className="relative rounded-[20px] mt-6 w-full">
+                    <Image
+                      width={0}
+                      height={0}
+                      src={playlist.image}
                       alt="demo image"
                       className="rounded-[40px] border-black border-[4px] w-full"
                     />
@@ -193,48 +194,15 @@ const SinglePlaylist = () => {
                     <p>{playlist.description}</p>
                   </div>
                 </div>
-                {/* <div className="order-2 md:order-3">
-                  <div className="flex flex-col justify-center items-center gap-3 w-full md:w-[180px]">
-                    {playlist.appleLink && (
-                      <>
-                        <a
-                          href={playlist.appleLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {" "}
-                          <Image src={Apple} alt="apple" />
-                        </a>
-                      </>
-                    )}
-
-                    {playlist.spotifyLink && (
-                      <>
-                        <a
-                          href={playlist.spotifyLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {" "}
-                          <Image src={Spotify} alt="spotify" />
-                        </a>
-                      </>
-                    )}
-
-                    {playlist.otherLink && (
-                      <>
-                        <a
-                          href={playlist.otherLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {" "}
-                          <Image src={Other} alt="other" />
-                        </a>
-                      </>
-                    )}
-                  </div>
-                </div> */}
+                <>
+                  <a
+                    href={playlist.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image src={Other} alt="other" />
+                  </a>
+                </>
               </div>
             </section>
           )}

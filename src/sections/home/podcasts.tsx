@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { TitleHeaders } from "@/components/titleHeaders";
 import Image from "next/image";
 import SlantArrow from "@/assets/slantArrow.svg";
-import DemoImage from "@/assets/image.png";
-import { DataType } from "@/pages";
 import Link from "next/link";
 
-export const PodcastSection = ({ data }: { data: DataType[] | null }) => {
+export const PodcastSection = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/podcast");
+        setData(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className="bg-black py-16 sm:py-20 md:py-24 lg:py-28">
       <TitleHeaders
@@ -16,16 +29,19 @@ export const PodcastSection = ({ data }: { data: DataType[] | null }) => {
       />
       <div className="w-full my-6 md:overflow-x-scroll no-scrollbar pl-6 sm:pl-10 md:pl-20 pr-6 sm:pr-10 md:pr-0">
         <div className="md:flex grid grid-cols-2 gap-6 md:w-fit">
-          {data
-            ?.filter((item) => item.type === "podcast")
-            .map((el) => (
-              <div className="rounded-[20px] w-full md:w-[260px]" key={el.id}>
+          {data.length > 0 ? (
+            data?.map((el: any, idx) => (
+              <div className="rounded-[20px] w-full md:w-[260px]" key={idx}>
                 <div className="relative">
-                  <img
-                    src={el.bannerImage}
-                    alt="demo image"
-                    className="rounded-[20px] border-bg-1 w-full border-[4px] md:h-[240px]"
-                  />
+                  <Link href={`/podcast/${el._id}`}>
+                    <Image
+                      src={el.image}
+                      width={0}
+                      height={0}
+                      alt="demo image"
+                      className="rounded-[20px] border-bg-1 w-full border-[4px] md:h-[240px]"
+                    />
+                  </Link>
                   <div className="absolute bg-white rounded-[50%] w-[38px] p-3 md:w-[48px] h-[38px] md:h-[48px] flex bottom-3 right-3 justify-center items-center">
                     <Image
                       src={SlantArrow}
@@ -35,20 +51,27 @@ export const PodcastSection = ({ data }: { data: DataType[] | null }) => {
                   </div>
                 </div>
                 <div className="py-3">
-                  <Link href={`/podcast/${el.id}`}>
+                  <Link href={`/podcast/${el._id}`}>
                     {" "}
                     <p className="text-bg-1 italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                      {el.name}
+                      {el.title}
                     </p>
                   </Link>
 
-                  <p className="text-bg-1 text-base">Podcast {el.id}</p>
+                  <p className="text-bg-1 text-base">{el.subtitle}</p>
                   <p className="text-bg-1 mt-2 border-[0.89px] w-max text-sm rounded-[20px] capitalize border-bg-1 text-opacity-50 px-2 py-1">
                     {el.category}
                   </p>
                 </div>
               </div>
-            ))}
+            ))
+          ) : (
+            <div className="w-full flex items-center justify-center">
+              <p className="text-[#A98D40] font-medium text-lg">
+                No podcast available
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>

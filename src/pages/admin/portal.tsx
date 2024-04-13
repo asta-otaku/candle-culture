@@ -90,8 +90,10 @@ function Portal() {
               <select
                 name="type"
                 onChange={handleChange}
+                defaultValue={"podcast"}
                 className="bg-transparent w-full outline-none"
               >
+                <option value="">Select Type</option>
                 <option value="podcast">Podcast</option>
                 <option value="music">Playlist</option>
                 <option value="poetry">Poetry</option>
@@ -134,8 +136,10 @@ function Portal() {
               <select
                 name="category"
                 onChange={handleChange}
+                defaultValue={"gospel"}
                 className="bg-transparent w-full outline-none"
               >
+                <option value="">Select Category</option>
                 <option value="gospel">Gospel</option>
                 <option value="afrobeat">Afrobeat</option>
                 <option value="jazz">Jazz</option>
@@ -197,36 +201,6 @@ function Portal() {
             Post
           </button>
         </form>
-        {values &&
-          values.map((value: any) => (
-            <div key={value._id} className="flex gap-4 mt-4">
-              <div className="w-1/4">
-                <Image
-                  src={`data:image/jpeg;base64,${value.image}`}
-                  alt="image"
-                  width={100}
-                  height={100}
-                />
-              </div>
-              <div className="w-3/4">
-                <h3 className="text-[#F2DEA7] font-medium text-lg">
-                  {value.title}
-                </h3>
-                <p className="text-[#A98D40] font-medium text-sm">
-                  {value.subtitle}
-                </p>
-                <p className="text-[#A98D40] font-medium text-sm">
-                  {value.category}
-                </p>
-                <p className="text-[#A98D40] font-medium text-sm">
-                  {value.link}
-                </p>
-                <p className="text-[#A98D40] font-medium text-sm">
-                  {value.description}
-                </p>
-              </div>
-            </div>
-          ))}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import Music from "../../../models/musicModel";
 import { connectDB } from "../../../lib/connectDb";
-import { IncomingForm } from "formidable";;
+import { IncomingForm } from "formidable";
 import * as fs from "fs";
 
 export const config = {
@@ -50,9 +50,20 @@ export default async function handler(req, res) {
     case "GET":
       try {
         const music = await Music.find();
-        res
-          .status(200)
-          .json({ message: "Music retrieved successfully", data: music });
+
+        res.status(200).json({
+          message: "Music retrieved successfully",
+          data: music.map(
+            ({ image, _id, title, subtitle, category, link, description }) => ({
+              title,
+              subtitle,
+              category,
+              link,
+              description,
+              image: "data:image/png;base64," + image.toString(),
+            })
+          ),
+        });
       } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });
