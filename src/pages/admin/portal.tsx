@@ -3,9 +3,11 @@ import upload from "@/assets/image-upload.svg";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
+import LoadingSpinner from "@/components/Loader";
 
 function Portal() {
   const photoID = useRef<any>(null);
+  const [loading, setLoading] = useState(false);
 
   const [formDetails, setFormDetails] = useState({
     type: "",
@@ -35,6 +37,8 @@ function Portal() {
       image: photoID.current.files[0],
     };
 
+    console.log(data);
+
     if (
       data.type === "" ||
       data.title === "" ||
@@ -46,6 +50,7 @@ function Portal() {
     ) {
       alert("Please fill all fields");
     } else {
+      setLoading(true);
       try {
         const res = await axios.post(`${BASE_URL}/api/${data.type}`, data, {
           headers: {
@@ -54,11 +59,14 @@ function Portal() {
         });
         if (res.status === 200) {
           alert("Post created successfully");
+          setLoading(false);
         } else {
           alert("An error occured");
         }
       } catch (error) {
         console.log(error);
+        alert("An error occured");
+        setLoading(false);
       }
     }
   };
@@ -77,7 +85,6 @@ function Portal() {
               <select
                 name="type"
                 onChange={handleChange}
-                defaultValue={"podcast"}
                 className="bg-transparent w-full outline-none"
               >
                 <option value="">Select Type</option>
@@ -123,7 +130,6 @@ function Portal() {
               <select
                 name="category"
                 onChange={handleChange}
-                defaultValue={"gospel"}
                 className="bg-transparent w-full outline-none"
               >
                 <option value="">Select Category</option>
@@ -185,7 +191,7 @@ function Portal() {
             type="submit"
             className="bg-[#A98D40] text-black font-medium text-lg py-2 rounded-lg mt-4"
           >
-            Post
+            {loading ? <LoadingSpinner className="mx-auto" /> : "Post"}
           </button>
         </form>
       </div>
