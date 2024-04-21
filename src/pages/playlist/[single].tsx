@@ -52,7 +52,7 @@ const SinglePlaylist = () => {
       }
     };
     fetchData();
-  }, [playlist]);
+  }, []);
 
   const [nextPlaylist, setNextPlaylist] = useState<any | null>(null);
   const [prevPlaylist, setPrevPlaylist] = useState<any | null>(null);
