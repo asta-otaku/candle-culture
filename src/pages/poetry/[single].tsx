@@ -40,12 +40,11 @@ const SinglePlaylist = () => {
         const res = await axios.get(`${BASE_URL}/api/poetry`);
         setData(res.data.data);
         const playlist = res.data.data.find(
-          (p: any) => p.id == router.query.single
+          (p: any) => p._id == router.query.single
         );
         setPlaylist({
           ...playlist,
         });
-        console.log(playlist, "playlist");
         setFetchingData(false);
       } catch (error) {
         console.log(error);
@@ -53,7 +52,7 @@ const SinglePlaylist = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [playlist]);
 
   const [nextPlaylist, setNextPlaylist] = useState<any | null>(null);
   const [prevPlaylist, setPrevPlaylist] = useState<any | null>(null);
