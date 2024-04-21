@@ -116,12 +116,10 @@ const Playlist = () => {
                           el.category === categoryFilter
                       )
                       .map((el: any, idx) => (
-                        <div
+                        <Link
+                          href={`/playlist/${el._id}`}
                           className="rounded-[20px] w-full cursor-pointer"
                           key={idx}
-                          onClick={() =>
-                            (window.location.href = `/playlist/${el._id}`)
-                          }
                         >
                           <div className="relative">
                             <Image
@@ -140,17 +138,15 @@ const Playlist = () => {
                             </div>
                           </div>
                           <div className="py-3 text-black">
-                            <Link href={`/playlist/${el._id}`}>
-                              <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                                {el.title}
-                              </p>
-                            </Link>
+                            <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+                              {el.title}
+                            </p>
                             <p className="text-base">{el.subtitle}</p>
                             <p className="mt-2 border-[0.89px] capitalize w-max text-xs rounded-[20px] border-black text-opacity-50 px-2 py-1">
                               {el.category}
                             </p>
                           </div>
-                        </div>
+                        </Link>
                       ))
                   ) : (
                     <div className="w-full flex items-center justify-center">
