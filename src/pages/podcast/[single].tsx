@@ -52,7 +52,7 @@ const SinglePlaylist = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [playlist]);
 
   const [nextPlaylist, setNextPlaylist] = useState<any | null>(null);
   const [prevPlaylist, setPrevPlaylist] = useState<any | null>(null);
@@ -94,7 +94,10 @@ const SinglePlaylist = () => {
               <div className="flex flex-col md:flex-row gap-10 md:gap-24">
                 <div className="flex flex-row md:flex-col gap-6 order-3 md:order-1">
                   {nextPlaylist && (
-                    <div className="w-full md:w-[260px]">
+                    <Link
+                      href={`/podcast/${nextPlaylist._id}`}
+                      className="w-full md:w-[260px]"
+                    >
                       <div className="flex items-center justify-between w-full">
                         <p className="uppercase font-medium">Next</p>
                         <Image src={rightArrow} alt="arrow right" />
@@ -117,17 +120,18 @@ const SinglePlaylist = () => {
                           </div>
                         </div>
                         <div className="py-3 text-black">
-                          <Link href={`/podcast/${nextPlaylist._id}`}>
-                            <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                              {nextPlaylist.title}
-                            </p>
-                          </Link>
+                          <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+                            {nextPlaylist.title}
+                          </p>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   )}
                   {prevPlaylist && (
-                    <div className="w-full md:w-[260px]">
+                    <Link
+                      href={`/podcast/${prevPlaylist._id}`}
+                      className="w-full md:w-[260px]"
+                    >
                       <div className="flex items-center justify-between w-full">
                         <p className="uppercase font-medium">PREV</p>
                         <Image src={ArrowBack} alt="arrow back" />
@@ -151,15 +155,13 @@ const SinglePlaylist = () => {
                         </div>
                         <div className="py-3 text-black">
                           <div className="py-3 text-black">
-                            <Link href={`/podcast/${prevPlaylist._id}`}>
-                              <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                                {prevPlaylist.title}
-                              </p>
-                            </Link>
+                            <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+                              {prevPlaylist.title}
+                            </p>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   )}
                 </div>
                 <div className="w-full order-1 md:order-2">
