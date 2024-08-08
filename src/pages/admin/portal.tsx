@@ -60,6 +60,9 @@ function Portal() {
         if (res.status === 200) {
           alert("Post created successfully");
           setLoading(false);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         } else {
           alert("An error occured");
         }

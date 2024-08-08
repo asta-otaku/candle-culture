@@ -44,7 +44,10 @@ const Podcast = () => {
           <div className="flex text-lg gap-2 px-10 bg-bg-1 w-full md:w-max md:-mt-8 mt-0 pb-2 relative shadow-lg">
             <div
               className="flex flex-col items-center text-black py-4 px-6 cursor-pointer"
-              onClick={() => setFilter("all")}
+              onClick={() => {
+                setFilter("all");
+                setCategoryFilter("");
+              }}
             >
               <p>All</p>
               {filter === "all" && (
