@@ -18,6 +18,35 @@ function Portal() {
     description: "",
   });
 
+  const [categoryOptions, setCategoryOptions] = useState<string[]>([]);
+
+  useEffect(() => {
+    const updateCategoryOptions = () => {
+      switch (formDetails.type) {
+        case "podcast":
+          setCategoryOptions(["Solo Episodes", "Conversations"]);
+          break;
+        case "music":
+          setCategoryOptions([
+            "Rest",
+            "Revival",
+            "Curator's Choice",
+            "Collaborations",
+            "Genres",
+            "Afro",
+          ]);
+          break;
+        case "poetry":
+          setCategoryOptions(["Own", "Inspired"]);
+          break;
+        default:
+          setCategoryOptions([]);
+      }
+    };
+
+    updateCategoryOptions();
+  }, [formDetails.type]);
+
   const handleChange = (e: any) => {
     setFormDetails({
       ...formDetails,
@@ -44,38 +73,43 @@ function Portal() {
       data.title === "" ||
       data.subtitle === "" ||
       data.category === "" ||
-      data.link === "" ||
       data.description === "" ||
       data.image === ""
     ) {
       alert("Please fill all fields");
-    } else {
-      setLoading(true);
-      try {
-        const res = await axios.post(`${BASE_URL}/api/${data.type}`, data, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        if (res.status === 200) {
-          alert("Post created successfully");
-          setLoading(false);
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
-        } else {
-          alert("An error occured");
-        }
-      } catch (error) {
-        console.log(error);
-        alert("An error occured");
+      return;
+    }
+
+    if (["podcast", "music"].includes(data.type) && data.link === "") {
+      alert("Please provide a link for podcasts or playlists");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await axios.post(`${BASE_URL}/api/${data.type}`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (res.status === 200) {
+        alert("Post created successfully");
         setLoading(false);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else {
+        alert("An error occurred");
       }
+    } catch (error) {
+      console.log(error);
+      alert("An error occurred");
+      setLoading(false);
     }
   };
 
   return (
-    <div className="w-scren h-screen flex items-center justify-center px-4">
+    <div className="w-screen h-screen flex items-center justify-center px-4">
       <div className="max-w-xl w-full relative">
         <h2 className="text-[#F2DEA7] font-medium text-2xl">Admin Portal</h2>
         <form
@@ -136,17 +170,16 @@ function Portal() {
                 className="bg-transparent w-full outline-none"
               >
                 <option value="">Select Category</option>
-                <option value="gospel">Gospel</option>
-                <option value="afrobeat">Afrobeat</option>
-                <option value="jazz">Jazz</option>
-                <option value="faith">Faith</option>
-                <option value="hope">Hope</option>
-                <option value="joy">Joy</option>
+                {categoryOptions.map((option, index) => (
+                  <option key={index} value={option.toLowerCase()}>
+                    {option}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
           <div>
-            <h5 className="text-[#A98D40] font-medium text-sm mb-1">Link*</h5>
+            <h5 className="text-[#A98D40] font-medium text-sm mb-1">Link</h5>
             <div className="flex justify-between items-center w-full p-2 bg-[#F2DEA7] rounded-lg border border-[#1018280D] border-solid">
               <input
                 placeholder="Link"

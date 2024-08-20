@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { TitleHeaders } from "@/components/titleHeaders";
 import Image from "next/image";
+import Poetry from "@/assets/Poetry.png";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/constants";
@@ -22,7 +23,12 @@ export const PoetrySection = () => {
   }, []);
 
   return (
-    <section className="bg-black pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+    <section className="bg-black relative pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+      <Image
+        src={Poetry}
+        alt="category"
+        className="top-0 left-0 absolute md:block hidden"
+      />
       <TitleHeaders
         title={"Poetry"}
         description={"Thoughts of life inspired by everyday encounters"}

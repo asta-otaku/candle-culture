@@ -5,10 +5,32 @@ import Logo from "@/assets/Logo.svg";
 import Hamburger from "@/assets/hamburger.svg";
 import Close from "@/assets/Close.svg";
 import Modal from "@/sections/modal";
+import axios from "axios";
 
 export const Header = ({ children }: { children: React.ReactNode }) => {
   const [mobileNav, setMobileNav] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  const handleSubscribe = async () => {
+    if (!email) return;
+    if (!email.match(regex)) {
+      alert("Invalid Email Address");
+    }
+
+    const res = await axios.post(
+      "/api/newsletter",
+      { email },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    if (res.status === 200) {
+      alert("Subscribed Successfully");
+    } else {
+      alert("An error occured");
+    }
+  };
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -92,11 +114,16 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
         </p>
         <div className="flex border mt-6 justify-between bg-[#F2DEA71A] border-bg-1 p-1 rounded-[40px] h-[50px] mx-auto w-full md:w-[460px]">
           <input
-            type="text"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address"
             className="border-none rounded-l-[40px] text-[#FDF0CD] text-sm bg-transparent placeholder:text-[#fdf0cd9a] p-2 w-full focus-visible:border-none focus-visible:outline-none"
           />
-          <button className="bg-bg-1 w-full sm:w-[120px] py-2 text-center text-sm flex items-center justify-center rounded-[40px] focus:border-none focus-visible:border-none focus-visible:outline-none">
+          <button
+            onClick={handleSubscribe}
+            className="bg-bg-1 w-full sm:w-[120px] py-2 text-center text-sm flex items-center justify-center rounded-[40px] focus:border-none focus-visible:border-none focus-visible:outline-none"
+          >
             Sign Up
           </button>
         </div>

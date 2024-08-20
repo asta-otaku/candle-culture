@@ -6,7 +6,14 @@ import Link from "next/link";
 import { BASE_URL } from "@/lib/constants";
 
 const Playlist = () => {
-  const allCategory = ["Gospel", "Afrobeat", "Jazz", "Faith", "Hope", "Joy"];
+  const allCategory = [
+    "Rest",
+    "Revival",
+    "Curator's Choice",
+    "Collaborations",
+    "Genres",
+    "Afro",
+  ];
   const [filter, setFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [data, setData] = useState([]);
@@ -144,7 +151,9 @@ const Playlist = () => {
                             <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
                               {el.title}
                             </p>
-                            <p className="text-base">{el.subtitle}</p>
+                            <p className="text-base max-w-[250px] w-full truncate">
+                              {el.subtitle}
+                            </p>
                             <p className="mt-2 border-[0.89px] capitalize w-max text-xs rounded-[20px] border-black text-opacity-50 px-2 py-1">
                               {el.category}
                             </p>

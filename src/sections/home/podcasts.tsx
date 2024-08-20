@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { TitleHeaders } from "@/components/titleHeaders";
 import Image from "next/image";
+import Podcasts from "@/assets/Podcasts.png";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/constants";
@@ -22,7 +23,12 @@ export const PodcastSection = () => {
   }, []);
 
   return (
-    <section className="bg-black py-16 sm:py-20 md:py-24 lg:py-28">
+    <section className="bg-black relative py-16 sm:py-20 md:py-24 lg:py-28">
+      <Image
+        src={Podcasts}
+        alt="category"
+        className="top-0 right-0 absolute md:block hidden"
+      />
       <TitleHeaders
         title={"Podcasts"}
         description={"Sounds that uplift the spirit"}
