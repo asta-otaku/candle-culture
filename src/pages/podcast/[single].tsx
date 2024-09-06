@@ -11,9 +11,10 @@ import otherIcon from "@/assets/otherIcon.svg";
 // import SlantArrow from "@/assets/slantArrow.svg";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-// import Link from "next/link";
+import Link from "next/link";
 import { AudioPlayer } from "react-audio-play";
 import { BASE_URL } from "@/lib/constants";
+import AudioBox from "@/components/AudioBox";
 
 const SinglePlaylist = () => {
   const router = useRouter();
@@ -92,21 +93,22 @@ const SinglePlaylist = () => {
         </div>
       ) : (
         <>
-          {currentPlaylist && (
-            <>
-              <div className="flex flex-col md:flex-row gap-8 items-center">
-                <Image
-                  width={0}
-                  height={0}
-                  src={currentPlaylist?.image}
-                  alt="demo image"
-                  className="rounded-2xl border-black border-[4px] w-52 h-52"
-                />
-                <div className="flex flex-col flex-wrap w-full gap-4">
-                  <h3 className="italic font-semibold text-[32px]">
-                    {currentPlaylist.title}
-                  </h3>
-                  <div className="flex gap-2 items-start">
+          {/* {currentPlaylist && ( */}
+          <>
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <Image
+                width={0}
+                height={0}
+                src={currentPlaylist?.image}
+                alt="demo image"
+                className="rounded-2xl border-black border-[4px] w-52 h-52"
+              />
+              <div className="flex flex-col flex-wrap w-full gap-4">
+                <h3 className="italic font-semibold text-[32px]">
+                  {currentPlaylist?.title}
+                </h3>
+                <div className="flex gap-2 items-start">
+                  <Link href={currentPlaylist?.appleMusic || "#"}>
                     <Image
                       width={0}
                       height={0}
@@ -114,6 +116,8 @@ const SinglePlaylist = () => {
                       alt=""
                       className="cursor-pointer"
                     />
+                  </Link>
+                  <Link href={currentPlaylist?.spotify || "#"}>
                     <Image
                       width={0}
                       height={0}
@@ -121,30 +125,35 @@ const SinglePlaylist = () => {
                       alt=""
                       className="cursor-pointer"
                     />
-                    <Image
-                      width={0}
-                      height={0}
-                      src={otherIcon}
-                      alt=""
-                      className="cursor-pointer"
-                    />
-                  </div>
-                  <AudioPlayer
-                    src={currentPlaylist.link}
-                    color="#000000"
-                    sliderColor="#CCCC"
-                    style={{
-                      background: "#FBF0D1",
-                      borderRadius: "15px",
-                      padding: "30px",
-                      width: "100%",
-                    }}
+                  </Link>
+                  <Image
+                    width={0}
+                    height={0}
+                    src={otherIcon}
+                    alt=""
+                    className="cursor-pointer"
                   />
                 </div>
+                <AudioBox
+                  songTitle={currentPlaylist?.title}
+                  audioSrc={currentPlaylist?.link}
+                />
+                {/* <AudioPlayer
+                  src={currentPlaylist?.link}
+                  color="#000000"
+                  sliderColor="#CCCC"
+                  style={{
+                    background: "#FBF0D1",
+                    borderRadius: "15px",
+                    padding: "30px",
+                    width: "100%",
+                  }}
+                /> */}
               </div>
-              <p className="my-6 line-clamp-3">{currentPlaylist.description}</p>
-            </>
-          )}
+            </div>
+            <p className="my-6 line-clamp-3">{currentPlaylist?.description}</p>
+          </>
+          {/* )} */}
 
           <div className="flex flex-col gap-4">
             <h3 className="font-semibold">OTHER EPISODES</h3>

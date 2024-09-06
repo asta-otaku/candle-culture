@@ -70,7 +70,7 @@ const Poetry = () => {
             <div className="flex text-lg gap-2 px-10 bg-black w-full md:w-max mt-0 md:-mt-8 pt-6 flex-wrap justify-center">
               {allCategory.map((category) => (
                 <div
-                  className="flex flex-col items-center text-bg-1 py-4 px-6 cursor-pointer"
+                  className="flex flex-col items-center text-bg-1 py-4 px-12 cursor-pointer"
                   onClick={() =>
                     setCategoryFilter(category.toLocaleLowerCase())
                   }
