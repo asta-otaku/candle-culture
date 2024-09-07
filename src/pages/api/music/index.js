@@ -58,7 +58,17 @@ export default async function handler(req, res) {
         res.status(200).json({
           message: "Music retrieved successfully",
           data: music.map(
-            ({ image, _id, title, subtitle, category, link, description }) => ({
+            ({
+              image,
+              _id,
+              title,
+              subtitle,
+              category,
+              link,
+              spotify,
+              appleMusic,
+              description,
+            }) => ({
               _id,
               title,
               subtitle,
