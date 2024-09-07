@@ -27,12 +27,16 @@ export default async function handler(req, res) {
           const subtitle = fields.subtitle[0];
           const category = fields.category[0];
           const link = fields.link[0];
+          const spotify = fields.spotify[0];
+          const appleMusic = fields.appleMusic[0];
           const description = fields.description[0];
           const newPodcast = new Podcast({
             title,
             subtitle,
             category,
             link,
+            spotify,
+            appleMusic,
             description,
             image: fs.readFileSync(files.image[0].filepath).toString("base64"),
           });
@@ -59,6 +63,8 @@ export default async function handler(req, res) {
               subtitle,
               category,
               link,
+              spotify,
+              appleMusic,
               description,
               image: "data:image/png;base64," + image.toString(),
             })

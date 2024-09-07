@@ -5,6 +5,8 @@ const Music = Schema({
   subtitle: String,
   category: String,
   link: String,
+  spotify: String,
+  appleMusic: String,
   description: String,
   image: String,
 });

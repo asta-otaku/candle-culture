@@ -15,6 +15,8 @@ function Portal() {
     subtitle: "",
     category: "",
     link: "",
+    spotify: "",
+    appleMusic: "",
     description: "",
   });
 
@@ -62,11 +64,11 @@ function Portal() {
       subtitle: formDetails.subtitle,
       category: formDetails.category,
       link: formDetails.link,
+      spotify: formDetails.spotify,
+      appleMusic: formDetails.appleMusic,
       description: formDetails.description,
       image: photoID.current.files[0],
     };
-
-    console.log(data);
 
     if (
       data.type === "" ||
