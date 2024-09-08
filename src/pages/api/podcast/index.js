@@ -5,24 +5,23 @@ import * as fs from "fs";
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false, // Since we're using formidable, we disable the default body parser
   },
 };
 
 export default async function handler(req, res) {
-  await connectDB();
+  await connectDB(); // Ensure the database is connected before handling the request
 
   switch (req.method.toUpperCase()) {
     case "POST":
       const form = new IncomingForm();
 
-      try {
-        form.parse(req, async (err, fields, files) => {
-          if (err)
-            return res
-              .status(500)
-              .json({ success: false, message: err.message });
+      form.parse(req, async (err, fields, files) => {
+        if (err) {
+          return res.status(500).json({ success: false, message: err.message });
+        }
 
+        try {
           const title = fields.title[0];
           const subtitle = fields.subtitle[0];
           const category = fields.category[0];
@@ -30,6 +29,8 @@ export default async function handler(req, res) {
           const spotify = fields.spotify[0];
           const appleMusic = fields.appleMusic[0];
           const description = fields.description[0];
+
+          // Create a new podcast instance
           const newPodcast = new Podcast({
             title,
             subtitle,
@@ -40,20 +41,29 @@ export default async function handler(req, res) {
             description,
             image: fs.readFileSync(files.image[0].filepath).toString("base64"),
           });
-          await newPodcast.save();
-        });
 
-        res.json({
-          message: "Podcast playlist data saved successfully",
-        });
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Internal server error" });
-      }
+          // Save the podcast to the database
+          await newPodcast.save();
+
+          // Send the response after saving the podcast
+          res.json({
+            message: "Podcast playlist data saved successfully",
+          });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ message: "Internal server error" });
+        }
+      });
       break;
+
     case "GET":
       try {
+        // Disable caching to avoid the 304 response during development
+        res.setHeader("Cache-Control", "no-store");
+
         const podcast = await Podcast.find();
+
+        // Respond with the podcast data
         res.status(200).json({
           message: "Podcast retrieved successfully",
           data: podcast.map(
@@ -84,6 +94,11 @@ export default async function handler(req, res) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });
       }
+      break;
+
+    default:
+      res.setHeader("Allow", ["POST", "GET"]);
+      res.status(405).end(`Method ${req.method} Not Allowed`);
       break;
   }
 }
