@@ -6,7 +6,7 @@ import Image from "next/image";
 const People = () => {
   return (
     <main>
-      <section className="px-6 sm:px-12 md:px-36 py-10 sm:py-16 md:py-20 bg-black">
+      <section className="px-6 sm:px-12 md:px-36 py-10 sm:py-16 md:py-20 bg-primary">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           <div className="w-full">
             <Image

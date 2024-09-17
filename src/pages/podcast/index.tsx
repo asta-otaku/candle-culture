@@ -29,7 +29,7 @@ const Podcast = () => {
   return (
     <main>
       {/* header */}
-      <section className="px-6 sm:px-12 md:px-32 text-center py-10 sm:py-16 md:py-20 bg-[#000]">
+      <section className="px-6 sm:px-12 md:px-32 text-center py-10 sm:py-16 md:py-20 bg-primary">
         <p className="italic text-bg-1 text-center text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
           Creative Encounters
         </p>
@@ -51,7 +51,7 @@ const Podcast = () => {
             >
               <p>All</p>
               {filter === "all" && (
-                <span className="rounded-[80px] w-[10px] h-1 bg-black"></span>
+                <span className="rounded-[80px] w-[10px] h-1 bg-primary"></span>
               )}
             </div>
             <div
@@ -60,14 +60,14 @@ const Podcast = () => {
             >
               <p>Category</p>
               {filter === "category" && (
-                <span className="rounded-[80px] w-[10px] h-1 bg-black"></span>
+                <span className="rounded-[80px] w-[10px] h-1 bg-primary"></span>
               )}
             </div>
           </div>
         </div>
         {filter === "category" && (
           <div className="flex justify-center">
-            <div className="flex text-lg gap-2 px-10 bg-black w-full md:w-max mt-0 md:-mt-8 pt-6 flex-wrap justify-center">
+            <div className="flex text-lg gap-2 px-10 bg-primary w-full md:w-max mt-0 md:-mt-8 pt-6 flex-wrap justify-center">
               {allCategory.map((category) => (
                 <div
                   className="flex flex-col items-center text-bg-1 py-4 px-6 cursor-pointer"
@@ -141,10 +141,10 @@ const Podcast = () => {
                             </div>
                           </div>
                           <div className="py-3 text-black">
-                            <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+                            <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] line-clamp-1">
                               {el.title}
                             </p>
-                            <p className="text-base max-w-[250px] w-full truncate">
+                            <p className="text-base max-w-[250px] w-full truncate line-clamp-1">
                               {el.subtitle}
                             </p>
                             <p className="mt-2 border-[0.89px] capitalize w-max text-xs rounded-[20px] border-black text-opacity-50 px-2 py-1">

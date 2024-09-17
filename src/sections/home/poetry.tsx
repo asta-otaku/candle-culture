@@ -23,7 +23,7 @@ export const PoetrySection = () => {
   }, []);
 
   return (
-    <section className="bg-black relative pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+    <section className="bg-primary relative pt-16 sm:pt-20 md:pt-24 lg:pt-28">
       <Image
         src={Poetry}
         alt="category"
@@ -60,13 +60,13 @@ export const PoetrySection = () => {
                 <div className="py-3">
                   <Link href={`/poetry/${el._id}`}>
                     {" "}
-                    <p className="text-bg-1 italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+                    <p className="text-bg-1 italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] line-clamp-1">
                       {el.title}
                     </p>
                   </Link>
 
                   <p className="text-bg-1 text-base">{el.subtitle}</p>
-                  <p className="text-bg-1 mt-2 border-[0.89px] w-max text-sm rounded-[20px] capitalize border-bg-1 text-opacity-50 px-2 py-1">
+                  <p className="text-bg-1 mt-2 border-[0.89px] w-max text-sm rounded-[20px] capitalize border-bg-1 text-opacity-50 px-2 py-1 line-clamp-1">
                     {el.category}
                   </p>
                 </div>

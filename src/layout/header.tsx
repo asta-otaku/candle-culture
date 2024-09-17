@@ -40,7 +40,7 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
     setIsModalOpen(false);
   };
   return (
-    <main className="bg-[#000000]">
+    <main className="bg-primary">
       {/* desktop view */}
       <nav className="justify-between hidden md:flex text-bg-1 text-lg items-center px-20 md:px-24 py-2 md:py-4">
         <Link href={"/people"}>
@@ -106,7 +106,7 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
       {children}
       {/* Newletter */}
       <section
-        className="px-6 sm:px-12 md:px-32 py-10 sm:py-16 md:py-20 bg-[#080808]"
+        className="px-6 sm:px-12 md:px-32 py-10 sm:py-16 md:py-20 bg-primary"
         id="newsletter"
       >
         <p className="italic text-bg-1 text-center text-2xl md:text-3xl">

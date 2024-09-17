@@ -12,7 +12,6 @@ import otherIcon from "@/assets/otherIcon.svg";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { AudioPlayer } from "react-audio-play";
 import { BASE_URL } from "@/lib/constants";
 import AudioBox from "@/components/AudioBox";
 
@@ -138,17 +137,6 @@ const SinglePlaylist = () => {
                   songTitle={currentPlaylist?.title}
                   audioSrc={currentPlaylist?.link}
                 />
-                {/* <AudioPlayer
-                  src={currentPlaylist?.link}
-                  color="#000000"
-                  sliderColor="#CCCC"
-                  style={{
-                    background: "#FBF0D1",
-                    borderRadius: "15px",
-                    padding: "30px",
-                    width: "100%",
-                  }}
-                /> */}
               </div>
             </div>
             <p className="my-6 line-clamp-3">{currentPlaylist?.description}</p>
@@ -158,10 +146,10 @@ const SinglePlaylist = () => {
           <div className="flex flex-col gap-4">
             <h3 className="font-semibold">OTHER EPISODES</h3>
             {nextPlaylist.map((p: any) => (
-              <div
+              <Link
+                href={`/podcast/${p._id}`}
                 key={p._id}
                 className="flex gap-2 md:gap-4 cursor-pointer"
-                onClick={() => setCurrentPlaylist(p)} // Set the clicked playlist as current
               >
                 <Image
                   width={0}
@@ -178,7 +166,7 @@ const SinglePlaylist = () => {
                     {p.subtitle}
                   </h6>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </>
@@ -280,7 +268,7 @@ const SinglePlaylist = () => {
 //               <div className="w-full order-1 md:order-2">
 //                 <div className="flex gap-5 items-center text-[20px]">
 //                   <p className="">{playlist.description}</p>
-//                   <span className="w-[9px] h-[9px] bg-black rounded-full"></span>
+//                   <span className="w-[9px] h-[9px] bg-primary rounded-full"></span>
 //                   <p>{playlist?.subtitle} Songs</p>
 //                 </div>
 //                 <p className="italic capitalize text-black text-left text-3xl sm:text-4xl md:text-6xl lg:text-8xl">

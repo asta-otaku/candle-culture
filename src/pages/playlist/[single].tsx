@@ -166,7 +166,7 @@ const SinglePlaylist = () => {
                 <div className="w-full order-1 md:order-2">
                   <div className="flex gap-5 items-center text-[20px]">
                     <p className="">{playlist.description}</p>
-                    <span className="w-[9px] h-[9px] bg-black rounded-full"></span>
+                    <span className="w-[9px] h-[9px] bg-primary rounded-full"></span>
                     <p>{playlist?.subtitle} Songs</p>
                   </div>
                   <p className="italic capitalize text-black text-left text-3xl sm:text-4xl md:text-6xl lg:text-8xl">

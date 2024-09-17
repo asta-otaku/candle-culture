@@ -48,7 +48,7 @@ export const BrowseType = () => {
                   </div>
                 </div>
                 <div
-                  className="rounded-[20px] flex flex-col items-center w-full md:w-[275px] top-2 -right-2 absolute h-full bg-[black] border-solid border border-[#FDF0CD] py-5 px-10"
+                  className="rounded-[20px] flex flex-col items-center w-full md:w-[275px] top-2 -right-2 absolute h-full bg-black border-solid border border-[#FDF0CD] py-5 px-10"
                   key={el.name}
                 ></div>
               </div>

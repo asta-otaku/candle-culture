@@ -22,7 +22,7 @@ export const PrayerSection = () => {
     setIsModalOpen(false);
   };
   return (
-    <section className="bg-black relative py-16 sm:py-20 md:py-28 lg:py-28">
+    <section className="bg-primary relative py-16 sm:py-20 md:py-28 lg:py-28">
       <Image
         src={Prayer}
         alt="category"
@@ -60,7 +60,7 @@ export const PrayerSection = () => {
               </Link>
             </div>
           </div>
-          <div className="rounded-[20px] flex flex-col items-center w-full md:w-[275px] top-2 absolute h-full bg-[black] border-solid border border-[#FDF0CD] py-5 px-10"></div>
+          <div className="rounded-[20px] flex flex-col items-center w-full md:w-[275px] top-2 absolute h-full bg-black border-solid border border-[#FDF0CD] py-5 px-10"></div>
         </div>
 
         <div className="relative w-full flex justify-center">
@@ -85,7 +85,7 @@ export const PrayerSection = () => {
               </div>
             </div>
           </div>
-          <div className="rounded-[20px] flex flex-col items-center w-full md:w-[275px] top-2 absolute h-full bg-[black] border-solid border border-[#FDF0CD] py-5 px-10"></div>
+          <div className="rounded-[20px] flex flex-col items-center w-full md:w-[275px] top-2 absolute h-full bg-black border-solid border border-[#FDF0CD] py-5 px-10"></div>
         </div>
 
         <div className="relative w-full flex justify-center">
@@ -119,7 +119,7 @@ export const PrayerSection = () => {
               </div>
             </div>
           </div>
-          <div className="rounded-[20px] flex flex-col items-center w-full md:w-[275px] top-2 absolute h-full bg-[black] border-solid border border-[#FDF0CD] py-5 px-10"></div>
+          <div className="rounded-[20px] flex flex-col items-center w-full md:w-[275px] top-2 absolute h-full bg-black border-solid border border-[#FDF0CD] py-5 px-10"></div>
         </div>
       </div>
 

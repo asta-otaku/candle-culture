@@ -14,7 +14,7 @@
 html {
   max-width: 1700px;
   margin: auto;
-  background-color: #000;
+  background-color: #43583e;
 }
 body {
   font-family: "Playfair Display", serif;
@@ -70,7 +70,7 @@ body {
   backdrop-filter: blur(22px);
   background-image: url("/playPauseBackground.svg");
   background-size: cover;
-  background-color: white;
+  background-color: #fbf0d1;
   background-position: center;
   align-items: center;
   background-repeat: no-repeat;

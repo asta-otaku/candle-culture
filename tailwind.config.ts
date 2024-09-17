@@ -21,6 +21,7 @@ const config: Config = {
         bg: {
           1: "#FBF0D1",
         },
+        primary: "#43583e",
       },
       screens: {
         md: "900px",

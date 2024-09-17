@@ -2,7 +2,7 @@ import React from "react";
 
 export const Testimonies = () => {
   return {
-    /* <section className="bg-black pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+    /* <section className="bg-primary pt-16 sm:pt-20 md:pt-24 lg:pt-28">
   <div className="w-fit my-6 pl-6 sm:pl-14 md:pl-24 pr-6 sm:pr-10 md:pr-0">
     <div className="flex gap-12 w-fit overflow-x-hidden">
       {Array.from(Array(1).keys()).map((el) => (
