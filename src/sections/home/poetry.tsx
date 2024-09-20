@@ -27,7 +27,7 @@ export const PoetrySection = () => {
       <Image
         src={Poetry}
         alt="category"
-        className="top-0 left-0 absolute md:block hidden"
+        className="top-16 left-0 absolute md:block hidden h-60 w-1/2"
       />
       <TitleHeaders
         title={"Poetry"}

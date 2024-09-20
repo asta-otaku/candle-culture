@@ -6,6 +6,7 @@ import * as fs from "fs";
 export const config = {
   api: {
     bodyParser: false, // Since we're using formidable, we disable the default body parser
+    responseLimit: false,
   },
 };
 

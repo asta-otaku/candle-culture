@@ -27,7 +27,7 @@ export const PodcastSection = () => {
       <Image
         src={Podcasts}
         alt="category"
-        className="top-0 right-0 absolute md:block hidden"
+        className="top-6 right-0 absolute md:block hidden h-60 w-[70%]"
       />
       <TitleHeaders
         title={"Podcasts"}

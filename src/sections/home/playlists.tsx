@@ -27,7 +27,7 @@ export const PlaylistsSection = () => {
       <Image
         src={Playlists}
         alt="category"
-        className="top-0 right-0 absolute md:block hidden"
+        className="top-16 right-0 absolute md:block hidden h-60 w-3/5"
       />
       <TitleHeaders
         title={"Playlists"}
@@ -36,41 +36,49 @@ export const PlaylistsSection = () => {
       />
       <div className="w-full my-6 md:overflow-x-scroll no-scrollbar pl-6 sm:pl-10 md:pl-20 pr-6 sm:pr-10 md:pr-0">
         <div className="md:flex grid grid-cols-2 gap-6 md:w-fit">
-          {data.map((el: any, idx) => (
-            <div className="rounded-[20px] w-full md:w-[260px]" key={idx}>
-              <div className="relative">
-                <Link href={`/playlist/${el._id}`}>
-                  <Image
-                    src={el.image}
-                    width={0}
-                    height={0}
-                    alt="demo image"
-                    className="rounded-[20px] border-bg-1 border-[4px] w-full md:h-[240px]"
-                  />
-                </Link>
-                <div className="absolute bg-white rounded-[50%] w-[38px] p-3 md:w-[48px] h-[38px] md:h-[48px] flex bottom-3 right-3 justify-center items-center">
-                  <Image
-                    src={SlantArrow}
-                    alt="slant arrow"
-                    className="w-auto"
-                  />
+          {data.length > 0 ? (
+            data.map((el: any, idx) => (
+              <div className="rounded-[20px] w-full md:w-[260px]" key={idx}>
+                <div className="relative">
+                  <Link href={`/playlist/${el._id}`}>
+                    <Image
+                      src={el.image}
+                      width={0}
+                      height={0}
+                      alt="demo image"
+                      className="rounded-[20px] border-bg-1 border-[4px] w-full md:h-[240px]"
+                    />
+                  </Link>
+                  <div className="absolute bg-white rounded-[50%] w-[38px] p-3 md:w-[48px] h-[38px] md:h-[48px] flex bottom-3 right-3 justify-center items-center">
+                    <Image
+                      src={SlantArrow}
+                      alt="slant arrow"
+                      className="w-auto"
+                    />
+                  </div>
+                </div>
+                <div className="py-3">
+                  <Link href={`/playlist/${el._id}`}>
+                    {" "}
+                    <p className="text-bg-1 italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] line-clamp-1">
+                      {el.title}
+                    </p>
+                  </Link>
+
+                  <p className="text-bg-1 text-base">{el.subtitle}</p>
+                  <p className="text-bg-1 mt-2 border-[0.89px] w-max text-sm rounded-[20px] capitalize border-bg-1 text-opacity-50 px-2 py-1 line-clamp-1">
+                    {el.category}
+                  </p>
                 </div>
               </div>
-              <div className="py-3">
-                <Link href={`/playlist/${el._id}`}>
-                  {" "}
-                  <p className="text-bg-1 italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] line-clamp-1">
-                    {el.title}
-                  </p>
-                </Link>
-
-                <p className="text-bg-1 text-base">{el.subtitle}</p>
-                <p className="text-bg-1 mt-2 border-[0.89px] w-max text-sm rounded-[20px] capitalize border-bg-1 text-opacity-50 px-2 py-1 line-clamp-1">
-                  {el.category}
-                </p>
-              </div>
+            ))
+          ) : (
+            <div className="w-full flex items-center justify-center">
+              <p className="text-[#A98D40] font-medium text-lg">
+                No playlist available
+              </p>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </section>
