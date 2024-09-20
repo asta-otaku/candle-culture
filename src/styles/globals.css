@@ -8,16 +8,210 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,600&display=swap");
-* {
-  font-family: "Playfair Display", serif;
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-RegularItalic.eot');
+  src: local('Reckless Neue Regular Italic'), local('RecklessNeue-RegularItalic'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-RegularItalic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-RegularItalic.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-RegularItalic.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-RegularItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
 }
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-ThinItalic.eot');
+  src: local('Reckless Neue Thin Italic'), local('RecklessNeue-ThinItalic'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-ThinItalic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-ThinItalic.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-ThinItalic.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Reckless Neue Book';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-Book.eot');
+  src: local('Reckless Neue Book'), local('RecklessNeue-Book'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Book.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Book.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Book.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-Regular.eot');
+  src: local('Reckless Neue Regular'), local('RecklessNeue-Regular'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Regular.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Regular.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-Light.eot');
+  src: local('Reckless Neue Light'), local('RecklessNeue-Light'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Light.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Light.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Light.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-Thin.eot');
+  src: local('Reckless Neue Thin'), local('RecklessNeue-Thin'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Thin.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Thin.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Thin.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-Heavy.eot');
+  src: local('Reckless Neue Heavy'), local('RecklessNeue-Heavy'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Heavy.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Heavy.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Heavy.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-LightItalic.eot');
+  src: local('Reckless Neue Light Italic'), local('RecklessNeue-LightItalic'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-LightItalic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-LightItalic.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-LightItalic.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-SemiBoldItalic.eot');
+  src: local('Reckless Neue SemiBold Italic'), local('RecklessNeue-SemiBoldItalic'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-SemiBoldItalic.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-SemiBoldItalic.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-Bold.eot');
+  src: local('Reckless Neue Bold'), local('RecklessNeue-Bold'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Bold.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Bold.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-Medium.eot');
+  src: local('Reckless Neue Medium'), local('RecklessNeue-Medium'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Medium.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Medium.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-BoldItalic.eot');
+  src: local('Reckless Neue Bold Italic'), local('RecklessNeue-BoldItalic'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-BoldItalic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-BoldItalic.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-BoldItalic.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-MediumItalic.eot');
+  src: local('Reckless Neue Medium Italic'), local('RecklessNeue-MediumItalic'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-MediumItalic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-MediumItalic.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-MediumItalic.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-HeavyItalic.eot');
+  src: local('Reckless Neue Heavy Italic'), local('RecklessNeue-HeavyItalic'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-HeavyItalic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-HeavyItalic.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-HeavyItalic.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-HeavyItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Reckless Neue Book';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-BookItalic.eot');
+  src: local('Reckless Neue Book Italic'), local('RecklessNeue-BookItalic'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-BookItalic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-BookItalic.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-BookItalic.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-BookItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('../assets/fonts/reckless-neue/RecklessNeue-SemiBold.eot');
+  src: local('Reckless Neue SemiBold'), local('RecklessNeue-SemiBold'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-SemiBold.woff2') format('woff2'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-SemiBold.woff') format('woff'),
+    url('../assets/fonts/reckless-neue/RecklessNeue-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
 html {
   max-width: 1700px;
   margin: auto;
-  background-color: #43583e;
+  background-color: "#00000";
 }
 body {
-  font-family: "Playfair Display", serif;
+  font-family: "Reckless Neue", serif;
 }
 
 @layer utilities {

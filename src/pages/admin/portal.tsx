@@ -39,7 +39,7 @@ function Portal() {
           ]);
           break;
         case "poetry":
-          setCategoryOptions(["Own", "Inspired"]);
+          setCategoryOptions(["Selected Works", "Curator's Anthology"]);
           break;
         default:
           setCategoryOptions([]);

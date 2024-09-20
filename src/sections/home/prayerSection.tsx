@@ -30,7 +30,10 @@ export const PrayerSection = () => {
       />
       <TitleHeaders title={"Prayer"} position={"right"} />
       <div className="flex flex-col md:flex-row gap-6 pt-10 sm:pt-12 md:pt-16 md:gap-12 justify-between px-6 sm:px-10 md:px-20">
-        <div className="relative w-full flex justify-center">
+        <div
+          onClick={() => window.scrollTo(0, document.body.scrollHeight)}
+          className="relative w-full flex justify-center"
+        >
           <div className="rounded-[20px] flex flex-col justify-center  categoryCard z-20 relative items-center w-full bg-[#FDF0CD]  py-6 px-8">
             <Image
               src={ColorfulTape}
@@ -49,7 +52,7 @@ export const PrayerSection = () => {
                     Newsletter
                   </p>
                   <p className="text-[#000] text-sm mt-2">
-                    Join hundreds of others finding light in their daily lives.
+                    Join thousands of others finding light in their daily lives.
                   </p>
                 </div>
               </div>

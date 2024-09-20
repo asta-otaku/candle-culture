@@ -6,7 +6,7 @@ import Link from "next/link";
 import { BASE_URL } from "@/lib/constants";
 
 const Poetry = () => {
-  const allCategory = ["Own", "Inspired"];
+  const allCategory = ["Selected Works", "Curator's Anthology"];
   const [filter, setFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [data, setData] = useState([]);

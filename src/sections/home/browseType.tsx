@@ -35,7 +35,7 @@ export const BrowseType = () => {
           {allCategory.map((el) => (
             <Link href={el.link} key={el.name}>
               <div className="relative">
-                <div className="rounded-[20px] flex flex-col categoryCard z-20 relative items-center w-full md:w-[275px] bg-[#FDF0CD]  py-5 px-8">
+                <div className="rounded-[20px] flex flex-col categoryCard z-20 relative items-center w-full md:w-[275px] bg-[#FDF0CD]  p-5">
                   <Image
                     src={ColorfulTape}
                     alt="category"
