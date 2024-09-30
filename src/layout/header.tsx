@@ -18,17 +18,22 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
     if (!email) return;
     if (!email.match(regex)) {
       alert("Invalid Email Address");
+      return;
     }
 
-    const res = await axios.post(
-      "/api/newsletter",
-      { email },
-      { headers: { "Content-Type": "application/json" } }
-    );
-    if (res.status === 200) {
-      alert("Subscribed Successfully");
-    } else {
-      alert("An error occured");
+    try {
+      const res = await axios.post(
+        "/api/newsletter",
+        { email },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      if (res.status === 200) {
+        alert("Subscribed Successfully");
+      } else {
+        alert("An error occurred");
+      }
+    } catch (error: any) {
+      alert(error.response.data.error);
     }
   };
 
