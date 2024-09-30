@@ -148,10 +148,10 @@ const Playlist = () => {
                             </div>
                           </div>
                           <div className="py-3 text-black">
-                            <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] line-clamp-1">
+                            <p className=" italic font-semibold text-base md:text-lg lg:text-xl">
                               {el.title}
                             </p>
-                            <p className="text-base max-w-[250px] w-full truncate line-clamp-1">
+                            <p className="text-sm max-w-[250px] w-full truncate">
                               {el.subtitle}
                             </p>
                             <p className="mt-2 border-[0.89px] capitalize w-max text-xs rounded-[20px] border-black text-opacity-50 px-2 py-1">

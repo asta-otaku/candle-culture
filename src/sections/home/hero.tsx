@@ -14,7 +14,7 @@ export const Hero = () => {
           <br /> Inspiration
         </p>
         <p className="text-bg-1 text-sm lg:text-base mt-4 sm:mt-6 md:mt-10 text-opacity-70">
-          In God’s light, we find our own light. (Psalm 36:9) <br /> Then, we
+          In God's light, we find our own light. (Psalm 36:9) <br /> Then, we
           can be a light to someone else.
         </p>
       </div>
