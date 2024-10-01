@@ -46,8 +46,9 @@ export default async function handler(req, res) {
 
       // Send the welcome email using Loops
       await loops.sendTransactionalEmail({
-        transactionalId: process.env.LOOPS_API_KEY, // Set this to your Loops transactional email ID
+        transactionalId: process.env.LOOPS_NEWSLETTER_ID,
         email: email,
+        addToAudience: true,
       });
 
       return res.status(200).json({
