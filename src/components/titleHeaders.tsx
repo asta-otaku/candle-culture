@@ -28,7 +28,7 @@ export const TitleHeaders = ({
           <p className="italic text-bg-1 text-[36px] sm:text-[40px] md:text-[60px] z-20">
             {title}
           </p>
-          <p className="text-bg-1 text-sm md:text-base mt-4 md:mt-6 text-opacity-70">
+          <p className="text-bg-1 text-sm md:text-base mt-4 md:mt-6 text-opacity-70 whitespace-nowrap">
             {description}
           </p>
         </div>

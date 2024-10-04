@@ -5,7 +5,7 @@ import olive from "@/assets/olive.svg";
 
 export const Hero = () => {
   return (
-    <section className="bg-primary flex flex-col md:flex-row px-4 sm:px-12 md:px-24 py-6 items-center justify-between gap-10">
+    <section className="bg-primary flex flex-col md:flex-row px-4 sm:px-12 md:px-24 py-6 items-center justify-between gap-10 max-w-screen-2xl w-full mx-auto">
       <div>
         <p className="text-bg-1 italic font-semibold text-[50px] sm:text-[80px] lg:text-[100px] leading-[55px] sm:leading-[70px] md:leading-[95px]">
           Faith, <br /> Creativity &

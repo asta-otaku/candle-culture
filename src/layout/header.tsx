@@ -123,6 +123,7 @@ export const Header = ({ children }: { children: React.ReactNode }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address"
+            autoComplete="email"
             className="border-none rounded-l-[40px] text-[#FDF0CD] text-sm bg-transparent placeholder:text-[#fdf0cd9a] p-2 w-full focus-visible:border-none focus-visible:outline-none"
           />
           <button

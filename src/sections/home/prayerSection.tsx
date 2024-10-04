@@ -5,7 +5,7 @@ import Clipboard from "@/assets/clipboard-text.svg";
 import Task from "@/assets/task-square.svg";
 import AddCircle from "@/assets/add-circle.svg";
 import PrayerIcon from "@/assets/device-message.svg";
-import Prayer from "@/assets/Prayer.png";
+// import Prayer from "@/assets/Prayer.png";
 // import Quotes from "@/assets/quotes.svg";
 // import Line from "@/assets/line.svg";
 import { TitleHeaders } from "@/components/titleHeaders";
@@ -23,11 +23,11 @@ export const PrayerSection = () => {
   };
   return (
     <section className="bg-primary relative py-16 sm:py-20 md:py-28 lg:py-28">
-      <Image
+      {/* <Image
         src={Prayer}
         alt="category"
         className="top-0 right-0 absolute md:block hidden"
-      />
+      /> */}
       <TitleHeaders title={"Prayer"} position={"right"} />
       <div className="flex flex-col md:flex-row gap-6 pt-10 sm:pt-12 md:pt-16 md:gap-12 justify-between px-6 sm:px-10 md:px-20">
         <div
