@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { TitleHeaders } from "@/components/titleHeaders";
 import Image from "next/image";
-import Podcasts from "@/assets/Podcasts.png";
+// import Podcasts from "@/assets/Podcasts.png";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/constants";
@@ -24,14 +24,14 @@ export const PodcastSection = () => {
 
   return (
     <section className="bg-primary relative py-16 sm:py-20 md:py-24 lg:py-28">
-      <Image
+      {/* <Image
         src={Podcasts}
         alt="category"
         className="top-6 right-0 absolute md:block hidden h-60 w-[70%]"
-      />
+      /> */}
       <TitleHeaders
         title={"Podcasts"}
-        description={"Sounds that uplift the spirit"}
+        description={"Conversations with creators"}
         position={"right"}
       />
       <div className="w-full my-6 md:overflow-x-scroll no-scrollbar pl-6 sm:pl-10 md:pl-20 pr-6 sm:pr-10 md:pr-0">

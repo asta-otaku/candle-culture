@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { TitleHeaders } from "@/components/titleHeaders";
 import Image from "next/image";
-import Playlists from "@/assets/Playlists.png";
+// import Playlists from "@/assets/Playlists.png";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/constants";
@@ -24,14 +24,14 @@ export const PlaylistsSection = () => {
 
   return (
     <section className="bg-primary relative pt-16 sm:pt-20 md:pt-24 lg:pt-28">
-      <Image
+      {/* <Image
         src={Playlists}
         alt="category"
         className="top-16 right-0 absolute md:block hidden h-60 w-3/5"
-      />
+      /> */}
       <TitleHeaders
         title={"Playlists"}
-        description={"Sounds that uplift the spirit"}
+        description={"Music that uplifts the spirit"}
         position={"right"}
       />
       <div className="w-full my-6 md:overflow-x-scroll no-scrollbar pl-6 sm:pl-10 md:pl-20 pr-6 sm:pr-10 md:pr-0">

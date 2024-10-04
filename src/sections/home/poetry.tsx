@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { TitleHeaders } from "@/components/titleHeaders";
 import Image from "next/image";
-import Poetry from "@/assets/Poetry.png";
+// import Poetry from "@/assets/Poetry.png";
 import SlantArrow from "@/assets/slantArrow.svg";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/constants";
@@ -24,14 +24,14 @@ export const PoetrySection = () => {
 
   return (
     <section className="bg-primary relative pt-16 sm:pt-20 md:pt-24 lg:pt-28">
-      <Image
+      {/* <Image
         src={Poetry}
         alt="category"
         className="top-16 left-0 absolute md:block hidden h-60 w-1/2"
-      />
+      /> */}
       <TitleHeaders
         title={"Poetry"}
-        description={"Thoughts of life inspired by everyday encounters"}
+        description={"Reflections on daily life"}
         position={"left"}
       />
       <div className="w-full my-6 md:overflow-x-scroll no-scrollbar pl-6 sm:pl-10 md:pl-20 pr-6 sm:pr-10 md:pr-0">

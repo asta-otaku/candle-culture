@@ -3,7 +3,7 @@ import React from "react";
 import axios from "axios";
 import appleIcon from "@/assets/applemusic.svg";
 import spotifyIcon from "@/assets/spotifyIcon.svg";
-import otherIcon from "@/assets/otherIcon.svg";
+// import otherIcon from "@/assets/otherIcon.svg";
 // import rightArrow from "@/assets/rightArrow.svg";
 // import ArrowBack from "@/assets/arrowBack.svg";
 // import Other from "@/assets/other.svg";
@@ -125,13 +125,13 @@ const SinglePlaylist = () => {
                       className="cursor-pointer"
                     />
                   </Link>
-                  <Image
+                  {/* <Image
                     width={0}
                     height={0}
                     src={otherIcon}
                     alt=""
                     className="cursor-pointer"
-                  />
+                  /> */}
                 </div>
                 <AudioBox
                   songTitle={currentPlaylist?.title}

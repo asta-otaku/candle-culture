@@ -94,7 +94,7 @@ function Portal() {
           "Content-Type": "multipart/form-data",
         },
       });
-      if (res.status === 200) {
+      if (res.status === 200 || res.status === 201) {
         alert("Post created successfully");
         setLoading(false);
         setTimeout(() => {
