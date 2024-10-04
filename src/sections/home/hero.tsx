@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import LoveImage from "@/assets/loveImage.png";
+// import LoveImage from "@/assets/loveImage.png";
+import olive from "@/assets/olive.svg";
 
 export const Hero = () => {
   return (
@@ -19,7 +20,7 @@ export const Hero = () => {
         </p>
       </div>
       <div>
-        <Image src={LoveImage} alt="love image" />
+        <Image src={olive} alt="olive image" />
       </div>
     </section>
   );
