@@ -38,17 +38,19 @@ export const PlaylistsSection = () => {
         <div className="md:flex grid grid-cols-2 gap-6 md:w-fit">
           {data.length > 0 ? (
             data.map((el: any, idx) => (
-              <div className="rounded-[20px] w-full md:w-[260px]" key={idx}>
+              <Link
+                href={`/playlist/${el._id}`}
+                className="rounded-[20px] w-full md:w-[260px]"
+                key={idx}
+              >
                 <div className="relative">
-                  <Link href={`/playlist/${el._id}`}>
-                    <Image
-                      src={el.image}
-                      width={0}
-                      height={0}
-                      alt="demo image"
-                      className="rounded-[20px] border-bg-1 border-[4px] w-full md:h-[240px]"
-                    />
-                  </Link>
+                  <Image
+                    src={el.image}
+                    width={0}
+                    height={0}
+                    alt="demo image"
+                    className="rounded-[20px] border-bg-1 border-[4px] w-full md:h-[240px]"
+                  />
                   <div className="absolute bg-white rounded-[50%] w-[38px] p-3 md:w-[48px] h-[38px] md:h-[48px] flex bottom-3 right-3 justify-center items-center">
                     <Image
                       src={SlantArrow}
@@ -70,7 +72,7 @@ export const PlaylistsSection = () => {
                     {el.category}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
             <div className="w-full flex items-center justify-center">

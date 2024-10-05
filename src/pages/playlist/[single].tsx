@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import axios from "axios";
-import rightArrow from "@/assets/rightArrow.svg";
-import ArrowBack from "@/assets/arrowBack.svg";
+import appleIcon from "@/assets/applemusic.svg";
+import spotifyIcon from "@/assets/spotifyIcon.svg";
+// import rightArrow from "@/assets/rightArrow.svg";
+// import ArrowBack from "@/assets/arrowBack.svg";
 import Other from "@/assets/other.svg";
 import arrowDown from "@/assets/arrowDown.svg";
 import SlantArrow from "@/assets/slantArrow.svg";
@@ -15,23 +17,7 @@ const SinglePlaylist = () => {
   const router = useRouter();
 
   const [data, setData] = useState([]);
-  const [playlist, setPlaylist] = useState<{
-    _id: string;
-    category: string;
-    description: string;
-    image: string;
-    link: string;
-    subtitle: string;
-    title: string;
-  }>({
-    _id: "",
-    category: "",
-    description: "",
-    image: "",
-    link: "",
-    subtitle: "",
-    title: "",
-  });
+  const [playlist, setPlaylist] = useState<any>({});
   const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
@@ -94,17 +80,19 @@ const SinglePlaylist = () => {
                 <div className="flex flex-row md:flex-col gap-6 order-3 md:order-1">
                   {nextPlaylist && (
                     <Link
-                      href={`/playlist/${nextPlaylist._id}`}
+                      href={`/playlist/${nextPlaylist?._id}`}
                       className="w-full md:w-[260px]"
                     >
                       <div className="flex items-center justify-between w-full">
-                        <p className="uppercase font-medium">Next</p>
-                        <Image src={rightArrow} alt="arrow right" />
+                        <p className="uppercase font-medium text-center w-full">
+                          Next
+                        </p>
+                        {/* <Image src={rightArrow} alt="arrow right" /> */}
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
                           <Image
-                            src={nextPlaylist.image}
+                            src={nextPlaylist?.image}
                             width={0}
                             height={0}
                             alt="demo image"
@@ -120,7 +108,7 @@ const SinglePlaylist = () => {
                         </div>
                         <div className="py-3 text-black">
                           <p className=" italic font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-                            {nextPlaylist.title}
+                            {nextPlaylist?.title}
                           </p>
                         </div>
                       </div>
@@ -128,12 +116,14 @@ const SinglePlaylist = () => {
                   )}
                   {prevPlaylist && (
                     <Link
-                      href={`/playlist/${prevPlaylist._id}`}
+                      href={`/playlist/${prevPlaylist?._id}`}
                       className="w-full md:w-[260px]"
                     >
                       <div className="flex items-center justify-between w-full">
-                        <p className="uppercase font-medium">PREV</p>
-                        <Image src={ArrowBack} alt="arrow back" />
+                        <p className="uppercase font-medium text-center w-full">
+                          PREV
+                        </p>
+                        {/* <Image src={ArrowBack} alt="arrow back" /> */}
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
@@ -165,21 +155,21 @@ const SinglePlaylist = () => {
                 </div>
                 <div className="w-full order-1 md:order-2">
                   <div className="flex gap-5 items-center text-[20px]">
-                    <p className="">{playlist.description}</p>
+                    {/* <p className="">{playlist.description}</p> */}
                     <span className="w-[9px] h-[9px] bg-primary rounded-full"></span>
                     <p>{playlist?.subtitle} Songs</p>
                   </div>
                   <p className="italic capitalize text-black text-left text-3xl sm:text-4xl md:text-6xl lg:text-8xl">
-                    {playlist.category}
+                    {playlist?.category}
                   </p>
                   <p className="italic text-black text-left text-3xl sm:text-4xl md:text-5xl">
-                    {playlist.title}
+                    {playlist?.title}
                   </p>
-                  <div className="relative rounded-[20px] mt-6 w-full">
+                  {/* <div className="relative rounded-[20px] mt-6 w-full">
                     <Image
                       width={0}
                       height={0}
-                      src={playlist.image}
+                      src={playlist?.image}
                       alt="demo image"
                       className="rounded-[40px] border-black border-[4px] w-full"
                     />
@@ -190,20 +180,42 @@ const SinglePlaylist = () => {
                         className="w-auto"
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="text-left text-xl mt-8">
-                    <p>{playlist.description}</p>
+                    <p>{playlist?.description}</p>
                   </div>
                 </div>
-                <>
-                  <a
-                    href={playlist.link}
+                <div className="flex gap-2 items-start">
+                  {playlist?.appleMusic && (
+                    <Link href={playlist.appleMusic}>
+                      <Image
+                        width={0}
+                        height={0}
+                        src={appleIcon}
+                        alt=""
+                        className="cursor-pointer w-14"
+                      />
+                    </Link>
+                  )}
+                  {playlist?.spotify && (
+                    <Link href={playlist.spotify}>
+                      <Image
+                        width={0}
+                        height={0}
+                        src={spotifyIcon}
+                        alt=""
+                        className="cursor-pointer w-14"
+                      />
+                    </Link>
+                  )}
+                  <Link
+                    href={playlist?.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Image src={Other} alt="other" />
-                  </a>
-                </>
+                  </Link>
+                </div>
               </div>
             </section>
           )}

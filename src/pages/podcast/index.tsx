@@ -34,8 +34,7 @@ const Podcast = () => {
           Creative Encounters
         </p>
         <p className="text-bg-1 text-opacity-70 text-base mt-4">
-          Listen to founders and creatives talk about their greatest
-          inspirations
+          Listen to founders and creatives talk about their greatest inspiration
         </p>
       </section>
 

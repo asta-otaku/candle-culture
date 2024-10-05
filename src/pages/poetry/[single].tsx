@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import axios from "axios";
-import rightArrow from "@/assets/rightArrow.svg";
-import ArrowBack from "@/assets/arrowBack.svg";
-import Other from "@/assets/other.svg";
-import arrowDown from "@/assets/arrowDown.svg";
+// import rightArrow from "@/assets/rightArrow.svg";
+// import ArrowBack from "@/assets/arrowBack.svg";
+// import Other from "@/assets/other.svg";
+// import arrowDown from "@/assets/arrowDown.svg";
 import SlantArrow from "@/assets/slantArrow.svg";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -61,7 +61,7 @@ const SinglePlaylist = () => {
 
     if (playListId && data) {
       // Find the index of the current playlist in the array
-      const currentIndex = data?.findIndex((p: any) => p._id == +playListId);
+      const currentIndex = data?.findIndex((p: any) => p._id === playListId);
       // Calculate the next and previous playlist IDs
       if (currentIndex == 0) {
         setPrevPlaylist(null);
@@ -99,8 +99,10 @@ const SinglePlaylist = () => {
                       className="w-full md:w-[260px]"
                     >
                       <div className="flex items-center justify-between w-full">
-                        <p className="uppercase font-medium">Next</p>
-                        <Image src={rightArrow} alt="arrow right" />
+                        <p className="uppercase font-medium text-center w-full">
+                          Next
+                        </p>
+                        {/* <Image src={rightArrow} alt="arrow right" /> */}
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
@@ -133,8 +135,10 @@ const SinglePlaylist = () => {
                       className="w-full md:w-[260px]"
                     >
                       <div className="flex items-center justify-between w-full">
-                        <p className="uppercase font-medium">PREV</p>
-                        <Image src={ArrowBack} alt="arrow back" />
+                        <p className="uppercase font-medium text-center w-full">
+                          PREV
+                        </p>
+                        {/* <Image src={ArrowBack} alt="arrow back" /> */}
                       </div>
                       <div className="rounded-[20px] mt-4">
                         <div className="relative">
@@ -166,7 +170,7 @@ const SinglePlaylist = () => {
                 </div>
                 <div className="w-full order-1 md:order-2">
                   <div className="flex gap-5 items-center text-[20px]">
-                    <p className="">{playlist.description}</p>
+                    {/* <p className="">{playlist.description}</p> */}
                     <span className="w-[9px] h-[9px] bg-primary rounded-full"></span>
                     <p>{playlist?.subtitle} Songs</p>
                   </div>
@@ -176,7 +180,7 @@ const SinglePlaylist = () => {
                   <p className="italic text-black text-left text-3xl sm:text-4xl md:text-5xl">
                     {playlist.title}
                   </p>
-                  <div className="relative rounded-[20px] mt-6 w-full">
+                  {/* <div className="relative rounded-[20px] mt-6 w-full">
                     <Image
                       width={0}
                       height={0}
@@ -191,12 +195,12 @@ const SinglePlaylist = () => {
                         className="w-auto"
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="text-left text-xl mt-8">
                     <p>{playlist.description}</p>
                   </div>
                 </div>
-                <>
+                {/* <>
                   <a
                     href={playlist.link}
                     target="_blank"
@@ -204,7 +208,7 @@ const SinglePlaylist = () => {
                   >
                     <Image src={Other} alt="other" />
                   </a>
-                </>
+                </> */}
               </div>
             </section>
           )}
